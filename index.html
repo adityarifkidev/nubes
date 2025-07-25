@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nubes - Travel with instant eSIM connectivity</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
     <!-- SwiperJS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -77,19 +78,35 @@
   <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
     <!-- Logo -->
     <div class="flex items-center space-x-2">
-      <div class="flex space-x-1">
-        <div class="w-1 h-6 bg-nubes-pink rounded-full"></div>
-        <div class="w-1 h-6 bg-nubes-yellow rounded-full"></div>
-        <div class="w-1 h-6 bg-nubes-blue rounded-full"></div>
-        <div class="w-1 h-6 bg-nubes-green rounded-full"></div>
-      </div>
-      <span class="text-xl font-semibold text-gray-900 ml-2">nubes</span>
+        <img src="/image/logo-header.png" alt="Nubes Logo" class="h-10 w-auto" />
     </div>
+  
     <!-- Menu -->
     <div class="hidden md:flex items-center space-x-8">
       <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
       <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
-      <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Help Center</a>
+      <!-- Dropdown Help Center -->
+        <div x-data="{ open: false }" class="relative inline-block text-left">
+            <!-- Trigger -->
+            <button @click="open = !open" class="flex items-center gap-1 text-gray-700 hover:text-nubes-purple text-sm font-medium focus:outline-none">
+            Help Center
+            <svg class="w-4 h-4 transform transition-transform duration-200" :class="{ 'rotate-180': open }" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.96l3.71-3.73a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+            </svg>
+            </button>
+        
+            <!-- Dropdown Menu -->
+            <div
+            x-show="open"
+            @click.away="open = false"
+            x-transition
+            class="absolute left-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-lg z-20"
+            >
+            <a href="/faq" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
+            <hr class="my-1 border-gray-200" />
+            <a href="/contact" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
+            </div>
+        </div>
       <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
     </div>
     <!-- Right -->
@@ -107,7 +124,7 @@
 <!-- Hero Section -->
 <section class="relative min-h-[400px] flex flex-col justify-center items-center bg-gradient-to-br from-nubes-purple to-nubes-pink pt-12 pb-16 overflow-hidden">
     <img src="image/header-image.png" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover opacity-70 pointer-events-none" />
-    <div class="absolute inset-0 bg-gradient-to-br from-nubes-purple to-nubes-pink opacity-80"></div>
+    <div class="absolute inset-0 bg-gradient-to-br from-nubes-purple to-nubes-pink opacity-60"></div>
     
     <div class="relative z-10 w-full max-w-2xl mx-auto flex flex-col items-center">
       <h1 class="text-4xl md:text-5xl font-bold text-white text-center leading-tight mb-3" style="letter-spacing:-1px;">
@@ -116,19 +133,47 @@
       </h1>
       <p class="text-base md:text-lg text-purple-100 text-center mb-6 max-w-xl">Nubes lets you connect globally in minutes. No more hunting for local SIM cards or paying roaming fees.</p>
       
-      <div class="flex space-x-4 mb-6">
-        <button class="pixel-hero-btn selected shadow-lg">Data</button>
-        <button class="pixel-hero-btn unselected shadow-lg">Voice</button>
-      </div>
+      <!-- Toggle Switch -->
+        <div x-data="{ active: 'data' }" class="relative w-fit mx-auto bg-white bg-opacity-20 p-1 rounded-full flex items-center space-x-2 mb-6">
+            <!-- Sliding background -->
+            <div
+            class="absolute inset-y-0 left-0 w-1/2 bg-white rounded-full shadow-md transition-all duration-300"
+            :class="{ 'translate-x-0': active === 'data', 'translate-x-full': active === 'voice' }"
+            style="width: 50%;"
+            ></div>
+        
+            <!-- Button Data -->
+            <button
+            @click="active = 'data'"
+            class="relative z-10 px-6 py-2 rounded-full font-medium text-nubes-purple transition"
+            :class="{ 'font-semibold': active === 'data', 'text-nubes-purple/70': active !== 'data' }"
+            >
+            Data
+            </button>
+        
+            <!-- Button Voice -->
+            <button
+            @click="active = 'voice'"
+            class="relative z-10 px-6 py-2 rounded-full font-medium text-nubes-purple transition"
+            :class="{ 'font-semibold': active === 'voice', 'text-nubes-purple/70': active !== 'voice' }"
+            >
+            Voice
+            </button>
+        </div>
       
-      <div class="w-full max-w-lg relative mb-0">
-        <span class="absolute left-6 top-1/2 -translate-y-1/2 text-nubes-purple">
-          <svg class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
-          </svg>
-        </span>
-        <input type="text" placeholder="Where are you going?" class="w-full pl-16 pr-4 py-5 rounded-full border-0 focus:ring-2 focus:ring-nubes-yellow focus:ring-opacity-50 text-gray-900 placeholder-gray-500 pixel-search font-medium bg-white" style="text-align:left;" />
-      </div>
+      <!-- Search Bar -->
+        <div class="w-full max-w-lg relative mx-auto">
+            <span class="absolute left-6 top-1/2 -translate-y-1/2 text-nubes-purple">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+            </svg>
+            </span>
+            <input
+            type="text"
+            placeholder="Where are you going?"
+            class="w-full pl-16 pr-4 py-4 rounded-full border-0 focus:ring-2 focus:ring-nubes-yellow focus:ring-opacity-50 text-gray-900 placeholder-gray-400 bg-white font-medium shadow-lg"
+            />
+        </div>
     </div>
   
     <!-- Carousel Banner -->
@@ -155,15 +200,18 @@
             <!-- Slide 2 -->
             <div class="swiper-slide">
                 <div class="pixel-banner flex flex-col sm:flex-row items-center justify-between px-6 sm:px-10 py-0 bg-cover bg-center" style="min-height:160px; background-image: url('/image/ads/ads1-bg.png');">
-                <div class="w-full sm:w-1/2 mb-6 sm:mb-0 sm:pr-4">
+                  <div class="w-full sm:w-1/2 mb-6 sm:mb-0 sm:pr-4">
                     <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Review and Earn</h2>
-                    <p class="text-lg text-purple-100">Share your experience & Earn credits</p>
-                </div>
-                <div class="w-full sm:w-1/2 flex justify-center sm:justify-end items-end pt-2 sm:pt-0 h-full">
+                    <p class="text-lg text-purple-100 mb-4">Share your experience & Earn credits</p>
+                    <a href="#" class="inline-block bg-[#FCCD40] text-white font-semibold py-2 px-4 hover:bg-yellow-400 transition rounded-full">
+                      Share to Learn More
+                    </a>
+                  </div>
+                  <div class="w-full sm:w-1/2 flex justify-center rounded-md sm:justify-end items-end pt-2 sm:pt-0 h-full">
                     <img src="image/ads/ads2.png" alt="Placeholder" class="h-full object-contain" />
+                  </div>
                 </div>
-                </div>
-            </div>
+              </div>              
     
             <!-- Slide 3 -->
             <div class="swiper-slide">
@@ -200,88 +248,145 @@
     </div>
   
   </section>  
-<!-- Choose Your Plan Type -->
-<section class="py-12 bg-nubes-gray">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="text-center mb-8">
-      <h2 class="pixel-section-title mb-2">Choose Your Plan Type</h2>
-      <p class="text-gray-600">Whether you're visiting one country or exploring the world, we have the perfect plan for you.</p>
-    </div>
+    <!-- Choose Your Plan Type -->
+    <section class="py-12 bg-nubes-gray">
+    <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center mb-8">
+        <h2 class="pixel-section-title mb-2">Choose Your Plan Type</h2>
+        <p class="text-gray-600">Whether you're visiting one country or exploring the world, we have the perfect plan for you.</p>
+        </div>
+        <!-- Tambahkan di <head> jika belum -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <!-- Tabs -->
-    <div class="flex justify-center mb-10">
-      <div class="bg-white rounded-full p-1 shadow flex">
-        <button class="px-6 py-2 rounded-full font-medium text-sm pixel-tab-active">Single eSIM</button>
-        <button class="px-6 py-2 rounded-full font-medium text-sm pixel-tab-inactive">Regional eSIM</button>
-        <button class="px-6 py-2 rounded-full font-medium text-sm pixel-tab-inactive">Global eSIM</button>
+    <div x-data="{ tab: 'single' }" class="flex justify-center mb-10">
+        <div class="relative bg-white rounded-full p-1 shadow-md flex w-[360px]">
+          
+          <!-- Geser latar aktif -->
+          <div
+            class="absolute top-1 bottom-1 w-1/3 bg-nubes-purple rounded-full transition-all duration-300"
+            :class="{
+              'left-1': tab === 'single',
+              'left-1/3': tab === 'regional',
+              'left-2/3': tab === 'global'
+            }"
+          ></div>
+      
+          <!-- Tab 1 -->
+          <button
+            @click="tab = 'single'"
+            class="relative z-10 w-1/3 text-sm font-medium px-3 py-2 rounded-full transition text-center whitespace-nowrap"
+            :class="tab === 'single' ? 'text-white' : 'text-nubes-purple'"
+          >
+            Single eSIM
+          </button>
+      
+          <!-- Tab 2 -->
+          <button
+            @click="tab = 'regional'"
+            class="relative z-10 w-1/3 text-sm font-medium px-3 py-2 rounded-full transition text-center whitespace-nowrap"
+            :class="tab === 'regional' ? 'text-white' : 'text-nubes-purple'"
+          >
+            Regional eSIM
+          </button>
+      
+          <!-- Tab 3 -->
+          <button
+            @click="tab = 'global'"
+            class="relative z-10 w-1/3 text-sm font-medium px-3 py-2 rounded-full transition text-center whitespace-nowrap"
+            :class="tab === 'global' ? 'text-white' : 'text-nubes-purple'"
+          >
+            Global eSIM
+          </button>
+        </div>
       </div>
-    </div>
+      
+
     <!-- Country Grid -->
     <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=DE" alt="Germany" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">Germany</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=US" alt="United State" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">United State</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=FR" alt="France" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">France</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=UK" alt="United Kingdom" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">United Kingdom</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=MA" alt="Morocco" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">Morocco</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=CA" alt="Canada" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">Canada</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=JP" alt="Japan" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">Japan</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=CN" alt="China" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">China</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=ID" alt="Indonesian" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">Indonesian</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=TR" alt="Turkey" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">Turkey</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=AU" alt="Australia" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">Australia</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=VN" alt="Vietnam" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">Vietnam</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=NA" alt="North America" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">North America</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=HK" alt="Hong Kong" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">Hong Kong</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=ES" alt="Spain" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">Spain</span>
-      </button>
-      <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-        <img src="https://via.placeholder.com/24x16/cccccc/ffffff?text=MY" alt="Malaysia" class="w-6 h-4 rounded object-cover border" />
-        <span class="text-gray-700 font-medium text-sm">Malaysia</span>
-      </button>
-    </div>
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/de.png" alt="Germany" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">Germany</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/us.png" alt="United States" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">United States</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/fr.png" alt="France" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">France</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/gb.png" alt="United Kingdom" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">United Kingdom</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/ma.png" alt="Morocco" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">Morocco</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/ca.png" alt="Canada" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">Canada</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/jp.png" alt="Japan" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">Japan</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/cn.png" alt="China" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">China</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/id.png" alt="Indonesia" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">Indonesia</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/tr.png" alt="Turkey" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">Turkey</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/au.png" alt="Australia" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">Australia</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/vn.png" alt="Vietnam" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">Vietnam</span>
+        </button>
+      
+        <!-- North America is not a country, no official flag -->
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <div class="w-6 h-4 bg-gray-300 rounded border flex items-center justify-center text-[10px] text-gray-600 font-bold">
+            NA
+          </div>
+          <span class="text-gray-700 font-medium text-sm">North America</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/hk.png" alt="Hong Kong" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">Hong Kong</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/es.png" alt="Spain" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">Spain</span>
+        </button>
+      
+        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+          <img src="https://flagcdn.com/w40/my.png" alt="Malaysia" class="w-6 h-4 rounded object-cover border" />
+          <span class="text-gray-700 font-medium text-sm">Malaysia</span>
+        </button>
+      </div>      
   </div>
 </section>
 <!-- How to Get Your eSIM -->
@@ -294,28 +399,24 @@
     <div class="grid md:grid-cols-3 gap-10">
       <!-- Step 1 -->
       <div class="text-center">
-        <div class="bg-gray-100 rounded-2xl p-6 mb-6 inline-block pixel-card">
-          <img src="https://via.placeholder.com/96x176/cccccc/ffffff?text=App" alt="App Welcome" class="w-24 h-44 bg-white rounded-xl shadow flex flex-col items-center justify-center mx-auto object-cover" />
-        </div>
+        <img src="image/how-to/1.png" alt="App Welcome" class="mx-auto mb-4" />
         <h3 class="text-lg font-semibold text-gray-900 mb-2">Download Nubes App</h3>
         <p class="text-nubes-purple text-sm underline cursor-pointer">here</p>
-      </div>
+      </div>          
       <!-- Step 2 -->
       <div class="text-center">
-        <div class="bg-gray-100 rounded-2xl p-6 mb-6 inline-block pixel-card">
-          <img src="https://via.placeholder.com/96x176/cccccc/ffffff?text=List" alt="App List" class="w-24 h-44 bg-white rounded-xl shadow flex flex-col items-center justify-center mx-auto object-cover" />
-        </div>
+        <img src="image/how-to/2.png" alt="App List" class="mx-auto mb-4" />
         <h3 class="text-lg font-semibold text-gray-900 mb-2">Select your destination</h3>
         <p class="text-gray-600 text-sm">and data plan</p>
       </div>
+      
       <!-- Step 3 -->
       <div class="text-center">
-        <div class="bg-gray-100 rounded-2xl p-6 mb-6 inline-block pixel-card">
-          <img src="https://via.placeholder.com/96x176/cccccc/ffffff?text=QR" alt="QR Code" class="w-24 h-44 bg-white rounded-xl shadow flex flex-col items-center justify-center mx-auto object-cover" />
-        </div>
+        <img src="image/how-to/3.png" alt="QR Code" class="mx-auto mb-4" />
         <h3 class="text-lg font-semibold text-gray-900 mb-2">Scan QR code to activate</h3>
         <p class="text-gray-600 text-sm">your eSIM</p>
       </div>
+      
     </div>
   </div>
 </section>
@@ -438,72 +539,106 @@
 </section>
 <!-- Footer -->
 <footer class="pixel-footer text-white py-16">
-  <div class="max-w-7xl mx-auto px-4">
-    <div class="grid md:grid-cols-4 gap-8">
-      <div>
-        <div class="flex items-center space-x-1 mb-6">
-          <div class="flex space-x-1">
-            <div class="w-1 h-6 bg-nubes-pink rounded-full"></div>
-            <div class="w-1 h-6 bg-nubes-yellow rounded-full"></div>
-            <div class="w-1 h-6 bg-nubes-blue rounded-full"></div>
-            <div class="w-1 h-6 bg-nubes-green rounded-full"></div>
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid md:grid-cols-5 gap-8"> <!-- diubah dari 4 ke 5 -->
+        <div>
+          <div class="mb-6">
+            <img src="/image/logo-footer.png" alt="Nubes Logo" class="h-60 w-auto" />
           </div>
-          <span class="text-xl font-semibold ml-2">nubes</span>
         </div>
-      </div>
-      <div>
-        <div class="pixel-footer-title">Popular Country</div>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#" class="pixel-footer-link">America</a></li>
-          <li><a href="#" class="pixel-footer-link">Japan</a></li>
-          <li><a href="#" class="pixel-footer-link">Turkey</a></li>
-          <li><a href="#" class="pixel-footer-link">Hong Kong</a></li>
-          <li><a href="#" class="pixel-footer-link">United Kingdom</a></li>
-          <li><a href="#" class="pixel-footer-link">Germany</a></li>
-          <li><a href="#" class="pixel-footer-link">Canada</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="pixel-footer-title">About Us</div>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#" class="pixel-footer-link">About Nubes</a></li>
-          <li><a href="#" class="pixel-footer-link">Blog</a></li>
-        </ul>
-      </div>
-      <div>
-        <div class="pixel-footer-title">More Info</div>
-        <ul class="space-y-2 text-sm">
-          <li><a href="#" class="pixel-footer-link">FAQ</a></li>
-          <li><a href="#" class="pixel-footer-link">Terms of Service</a></li>
-          <li><a href="#" class="pixel-footer-link">Privacy Policy</a></li>
-        </ul>
-      </div>
+        <div>
+          <div class="pixel-footer-title">Popular Country</div>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="pixel-footer-link">America</a></li>
+            <li><a href="#" class="pixel-footer-link">Japan</a></li>
+            <li><a href="#" class="pixel-footer-link">Turkey</a></li>
+            <li><a href="#" class="pixel-footer-link">Hong Kong</a></li>
+            <li><a href="#" class="pixel-footer-link">United Kingdom</a></li>
+            <li><a href="#" class="pixel-footer-link">Germany</a></li>
+            <li><a href="#" class="pixel-footer-link">Canada</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="pixel-footer-title">About Us</div>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="pixel-footer-link">About Nubes</a></li>
+            <li><a href="#" class="pixel-footer-link">Blog</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="pixel-footer-title">More Info</div>
+          <ul class="space-y-2 text-sm">
+            <li><a href="#" class="pixel-footer-link">FAQ</a></li>
+            <li><a href="#" class="pixel-footer-link">Terms of Service</a></li>
+            <li><a href="#" class="pixel-footer-link">Privacy Policy</a></li>
+          </ul>
+        </div>
+  
+    <!-- Kolom Media Sosial & Store -->
+<div class="flex flex-col items-end space-y-6">
+
+    <!-- Media Sosial -->
+    <div class="flex space-x-4">
+      <!-- Instagram -->
+      <a href="#" class="text-white hover:text-nubes-pink transition" aria-label="Instagram">
+        <img src="/image/social-media/instagram.png" alt="Instagram" class="w-6 h-6" />
+      </a>
+  
+      <!-- Facebook -->
+      <a href="#" class="text-white hover:text-nubes-pink transition" aria-label="Facebook">
+        <img src="/image/social-media/facebook.png" alt="Facebook" class="w-6 h-6" />
+      </a>
+  
+      <!-- LinkedIn -->
+      <a href="#" class="text-white hover:text-nubes-pink transition" aria-label="LinkedIn">
+        <img src="/image/social-media/linkedin.png" alt="LinkedIn" class="w-6 h-6" />
+      </a>
+  
+      <!-- YouTube -->
+      <a href="#" class="text-white hover:text-nubes-pink transition" aria-label="YouTube">
+        <img src="/image/social-media/youtube.png" alt="YouTube" class="w-6 h-6" />
+      </a>
+  
+      <!-- TikTok -->
+      <a href="#" class="text-white hover:text-nubes-pink transition" aria-label="TikTok">
+        <img src="/image/social-media/tiktok.png" alt="TikTok" class="w-6 h-6" />
+      </a>
+
+      <!-- X (Twitter) -->
+      <a href="#" class="text-white hover:text-nubes-pink transition" aria-label="Twitter">
+        <img src="/image/social-media/twitter.png" alt="Twitter" class="w-6 h-6" />
+      </a>
+
     </div>
-    <div class="border-t border-purple-400 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-      <div class="flex space-x-4 mb-4 md:mb-0">
-        <a href="#" class="pixel-footer-social"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z"/></svg></a>
-        <a href="#" class="pixel-footer-social"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg></a>
-        <a href="#" class="pixel-footer-social"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-        <a href="#" class="pixel-footer-social"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
-        <a href="#" class="pixel-footer-social"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
-        <a href="#" class="pixel-footer-social"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/></svg></a>
-      </div>
-      <div class="flex items-center space-x-4">
-        <div class="flex items-center space-x-2">
-          <div class="w-4 h-4 bg-nubes-green rounded"></div>
-          <span class="text-sm text-purple-200">Google Play</span>
-        </div>
-        <div class="flex items-center space-x-2">
-          <div class="w-4 h-4 bg-white rounded"></div>
-          <span class="text-sm text-purple-200">App Store</span>
-        </div>
-      </div>
-    </div>
-    <div class="text-center mt-8">
-      <p class="pixel-footer-copyright">©2025 Nubes</p>
+  
+    <!-- Store Buttons -->
+    <div class="flex flex-col items-end space-y-3">
+        <!-- Google Play -->
+        <a href="#">
+            <img
+            src="/image/google-play.png"
+            alt="Get it on Google Play"
+            class="h-10 w-auto object-contain rounded-md shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200"
+            />
+        </a>
+        
+        <!-- App Store -->
+        <a href="#">
+            <img
+            src="/image/app-store.png"
+            alt="Download on the App Store"
+            class="h-10 w-auto object-contain rounded-md shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200"
+            />
+        </a>
     </div>
   </div>
-</footer>
+      </div>
+      <div class="border-t border-purple-400 mt-12 pt-8 text-center">
+        <p class="pixel-footer-copyright">©2025 Nubes</p>
+      </div>
+    </div>
+  </footer>
+  
 </body>
 
 <script>
