@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nubes - Travel with instant eSIM connectivity</title>
+    
+    <!-- External Scripts and Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-
-    <!-- SwiperJS CDN -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
     <script>
         tailwind.config = {
             theme: {
@@ -33,626 +35,814 @@
             }
         }
     </script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
     <style>
-      body { font-family: 'Inter', sans-serif; }
-      .pixel-shadow { box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08); }
-      .pixel-shadow-md { box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); }
-      .pixel-shadow-lg { box-shadow: 0 8px 32px 0 rgba(0,0,0,0.12); }
-      .pixel-tab-active { background: #A259C6; color: #fff; }
-      .pixel-tab-inactive { background: #F3F4F6; color: #222; }
-      .pixel-faq-arrow { transition: transform 0.2s; }
-      .pixel-faq-arrow.open { transform: rotate(180deg); }
-      .pixel-btn { box-shadow: 0 2px 8px 0 rgba(236,72,153,0.15); }
-      .pixel-banner { box-shadow: 0 8px 32px 0 rgba(162,89,198,0.18); }
-      .pixel-card { box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); }
-      .pixel-country { box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); }
-      .pixel-footer { background: linear-gradient(90deg, #7B2FF2 0%, #F357A8 100%); }
-      .pixel-dot { width: 12px; height: 12px; border-radius: 9999px; margin: 0 3px; display: inline-block; }
-      .pixel-dot.active { background: #fff; }
-      .pixel-dot.inactive { background: rgba(255,255,255,0.5); }
-      .pixel-navbar-btn { background: #EC4899; color: #fff; border-radius: 9999px; font-weight: 600; padding: 6px 20px; font-size: 15px; }
-      .pixel-navbar-signin { background: #fff; color: #EC4899; border: 2px solid #EC4899; border-radius: 9999px; font-weight: 600; padding: 6px 20px; font-size: 15px; }
-      .pixel-navbar-signin:hover { background: #EC4899; color: #fff; }
-      .pixel-search { box-shadow: 0 2px 8px 0 rgba(162,89,198,0.10); font-size: 18px; }
-      .pixel-hero-btn { font-size: 18px; font-weight: 700; border-radius: 9999px; padding: 12px 40px; }
-      .pixel-hero-btn.selected { background: #fff; color: #A259C6; }
-      .pixel-hero-btn.unselected { background: #fff; color: #A259C6; opacity: 0.5; }
-      .pixel-section-title { font-size: 32px; font-weight: 700; color: #A259C6; }
-      .pixel-faq-card { box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); border-radius: 16px; }
-      .pixel-help-btn { background: #EC4899; color: #fff; border-radius: 12px; font-weight: 600; font-size: 17px; padding: 14px 40px; }
-      .pixel-help-btn svg { margin-right: 8px; }
-      .pixel-app-btn { background: #000; color: #fff; border-radius: 12px; font-weight: 600; font-size: 17px; padding: 14px 32px; }
-      .pixel-app-btn svg { margin-right: 8px; }
-      .pixel-footer-link { color: #D1B3F7; }
-      .pixel-footer-link:hover { color: #fff; }
-      .pixel-footer-title { font-size: 18px; font-weight: 600; margin-bottom: 16px; }
-      .pixel-footer-social { color: #D1B3F7; margin-right: 12px; }
-      .pixel-footer-social:hover { color: #fff; }
-      .pixel-footer-copyright { color: #D1B3F7; font-size: 15px; margin-top: 32px; }
+        body { 
+            font-family: 'Inter', sans-serif; 
+        }
+        
+        /* Shadow Utilities */
+        .pixel-shadow { 
+            box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08); 
+        }
+        .pixel-shadow-md { 
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); 
+        }
+        .pixel-shadow-lg { 
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.12); 
+        }
+        
+        /* Tab Styles */
+        .pixel-tab-active { 
+            background: #A259C6; 
+            color: #fff; 
+        }
+        .pixel-tab-inactive { 
+            background: #F3F4F6; 
+            color: #222; 
+        }
+        
+        /* FAQ Styles */
+        .pixel-faq-arrow { 
+            transition: transform 0.2s; 
+        }
+        .pixel-faq-arrow.open { 
+            transform: rotate(180deg); 
+        }
+        .pixel-faq-card { 
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); 
+            border-radius: 16px; 
+        }
+        
+        /* Button Styles */
+        .pixel-btn { 
+            box-shadow: 0 2px 8px 0 rgba(236,72,153,0.15); 
+        }
+        .pixel-navbar-btn { 
+            background: #EC4899; 
+            color: #fff; 
+            border-radius: 9999px; 
+            font-weight: 600; 
+            padding: 6px 20px; 
+            font-size: 15px; 
+        }
+        .pixel-navbar-signin { 
+            background: #fff; 
+            color: #EC4899; 
+            border: 2px solid #EC4899; 
+            border-radius: 9999px; 
+            font-weight: 600; 
+            padding: 6px 20px; 
+            font-size: 15px; 
+        }
+        .pixel-navbar-signin:hover { 
+            background: #EC4899; 
+            color: #fff; 
+        }
+        
+        /* Hero Section Styles */
+        .pixel-banner { 
+            box-shadow: 0 8px 32px 0 rgba(162,89,198,0.18); 
+        }
+        .pixel-search { 
+            box-shadow: 0 2px 8px 0 rgba(162,89,198,0.10); 
+            font-size: 18px; 
+        }
+        .pixel-hero-btn { 
+            font-size: 18px; 
+            font-weight: 700; 
+            border-radius: 9999px; 
+            padding: 12px 40px; 
+        }
+        .pixel-hero-btn.selected { 
+            background: #fff; 
+            color: #A259C6; 
+        }
+        .pixel-hero-btn.unselected { 
+            background: #fff; 
+            color: #A259C6; 
+            opacity: 0.5; 
+        }
+        
+        /* Card and Country Styles */
+        .pixel-card { 
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); 
+        }
+        .pixel-country { 
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); 
+        }
+        
+        /* Section Title */
+        .pixel-section-title { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: #A259C6; 
+        }
+        
+        /* Help and App Button Styles */
+        .pixel-help-btn { 
+            background: #EC4899; 
+            color: #fff; 
+            border-radius: 12px; 
+            font-weight: 600; 
+            font-size: 17px; 
+            padding: 14px 40px; 
+        }
+        .pixel-help-btn svg { 
+            margin-right: 8px; 
+        }
+        .pixel-app-btn { 
+            background: #000; 
+            color: #fff; 
+            border-radius: 12px; 
+            font-weight: 600; 
+            font-size: 17px; 
+            padding: 14px 32px; 
+        }
+        .pixel-app-btn svg { 
+            margin-right: 8px; 
+        }
+        
+        /* Footer Styles */
+        .pixel-footer { 
+            background: linear-gradient(90deg, #7B2FF2 0%, #F357A8 100%); 
+        }
+        .pixel-footer-link { 
+            color: #D1B3F7; 
+        }
+        .pixel-footer-link:hover { 
+            color: #fff; 
+        }
+        .pixel-footer-title { 
+            font-size: 18px; 
+            font-weight: 600; 
+            margin-bottom: 16px; 
+        }
+        .pixel-footer-social { 
+            color: #D1B3F7; 
+            margin-right: 12px; 
+        }
+        .pixel-footer-social:hover { 
+            color: #fff; 
+        }
+        .pixel-footer-copyright { 
+            color: #D1B3F7; 
+            font-size: 15px; 
+            margin-top: 32px; 
+        }
+        
+        /* Pagination Dots */
+        .pixel-dot { 
+            width: 12px; 
+            height: 12px; 
+            border-radius: 9999px; 
+            margin: 0 3px; 
+            display: inline-block; 
+        }
+        .pixel-dot.active { 
+            background: #fff; 
+        }
+        .pixel-dot.inactive { 
+            background: rgba(255,255,255,0.5); 
+        }
     </style>
 </head>
+
 <body class="bg-white">
-<!-- Navbar -->
-<nav class="w-full bg-white shadow-sm sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
-    <!-- Logo -->
-    <div class="flex items-center space-x-2">
-        <img src="/image/logo-header.png" alt="Nubes Logo" class="h-10 w-auto" />
-    </div>
-  
-    <!-- Menu -->
-    <div class="hidden md:flex items-center space-x-8">
-      <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
-      <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
-      <!-- Dropdown Help Center -->
-        <div x-data="{ open: false }" class="relative inline-block text-left">
-            <!-- Trigger -->
+    <!-- Navigation Bar -->
+    <nav class="w-full bg-white shadow-sm sticky top-0 z-50" x-data="{ mobileOpen: false }">
+      <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+        
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <img src="image/logo-header.png" alt="Nubes Logo" class="h-10 w-auto" />
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
+          <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
+          <!-- Help Center Dropdown -->
+          <div x-data="{ open: false }" class="relative inline-block text-left">
             <button @click="open = !open" class="flex items-center gap-1 text-gray-700 hover:text-nubes-purple text-sm font-medium focus:outline-none">
-            Help Center
-            <svg class="w-4 h-4 transform transition-transform duration-200" :class="{ 'rotate-180': open }" fill="currentColor" viewBox="0 0 20 20">
+              Help Center
+              <svg class="w-4 h-4 transform transition-transform duration-200" :class="{ 'rotate-180': open }" fill="currentColor" viewBox="0 0 20 20">
                 <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.96l3.71-3.73a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
-            </svg>
+              </svg>
             </button>
-        
-            <!-- Dropdown Menu -->
-            <div
-            x-show="open"
-            @click.away="open = false"
-            x-transition
-            class="absolute left-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-lg z-20"
-            >
-            <a href="/faq" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
-            <hr class="my-1 border-gray-200" />
-            <a href="/contact" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
+            <div x-show="open" @click.away="open = false" x-transition class="absolute left-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-lg z-20">
+              <a href="/faq" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
+              <hr class="my-1 border-gray-200" />
+              <a href="/contact" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
             </div>
+          </div>
+          <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
         </div>
-      <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
-    </div>
-    <!-- Right -->
-    <div class="flex items-center space-x-3">
-      <button class="pixel-navbar-btn">EN – USD $</button>
-      <button class="pixel-navbar-signin flex items-center transition">
-        Sign In
-        <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-        </svg>
-      </button>
-    </div>
-  </div>
-</nav>
-<!-- Hero Section -->
-<section class="relative min-h-[400px] flex flex-col justify-center items-center bg-gradient-to-br from-nubes-purple to-nubes-pink pt-12 pb-16 overflow-hidden">
-    <img src="image/header-image.png" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover opacity-70 pointer-events-none" />
-    <div class="absolute inset-0 bg-gradient-to-br from-nubes-purple to-nubes-pink opacity-60"></div>
-    
-    <div class="relative z-10 w-full max-w-2xl mx-auto flex flex-col items-center">
-      <h1 class="text-4xl md:text-5xl font-bold text-white text-center leading-tight mb-3" style="letter-spacing:-1px;">
-        Travel with instant<br>
-        <span class="text-nubes-yellow">eSIM connectivity</span>
-      </h1>
-      <p class="text-base md:text-lg text-purple-100 text-center mb-6 max-w-xl">Nubes lets you connect globally in minutes. No more hunting for local SIM cards or paying roaming fees.</p>
+
+        <!-- Right Side Buttons -->
+        <div class="hidden md:flex items-center space-x-3">
+          <button class="pixel-navbar-btn">EN – USD $</button>
+          <button class="pixel-navbar-signin flex items-center transition">
+            Sign In
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <div class="md:hidden flex items-center">
+          <button @click="mobileOpen = !mobileOpen" class="text-gray-700 focus:outline-none">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path :class="{ 'hidden': mobileOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16" />
+              <path :class="{ 'hidden': !mobileOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div x-show="mobileOpen" class="md:hidden px-6 pb-4 flex flex-col items-center space-y-3 text-center">
+        <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
+        <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
+        <a href="/faq" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">FAQ</a>
+        <a href="/contact" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Contact Us</a>
+        <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
       
-      <!-- Toggle Switch -->
+        <div class="pt-2 flex flex-col items-center gap-2 w-full">
+          <button class="pixel-navbar-btn w-full text-center">EN – USD $</button>
+          <button class="pixel-navbar-signin flex items-center justify-center gap-1 w-full">
+            Sign In
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>      
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-[400px] flex flex-col justify-center items-center bg-gradient-to-br from-nubes-purple to-nubes-pink pt-12 pb-16 overflow-hidden">
+      <!-- Background Image -->
+      <img src="image/header-image.png" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover opacity-70 pointer-events-none" />
+      <div class="absolute inset-0 bg-gradient-to-br from-nubes-purple to-nubes-pink opacity-60"></div>
+
+      <!-- Hero Content -->
+      <div class="relative z-10 w-full max-w-2xl mx-auto flex flex-col items-center">
+        <h1 class="text-4xl md:text-5xl font-bold text-white text-center leading-tight mb-3" style="letter-spacing:-1px;">
+          Travel with instant<br>
+          <span class="text-nubes-yellow">eSIM connectivity</span>
+        </h1>
+        <p class="text-base md:text-lg text-purple-100 text-center mb-6 max-w-xl">
+          Nubes lets you connect globally in minutes. No more hunting for local SIM cards or paying roaming fees.
+        </p>
+
+        <!-- Data/Voice Toggle Switch -->
         <div x-data="{ active: 'data' }" class="relative w-fit mx-auto bg-white bg-opacity-20 p-1 rounded-full flex items-center space-x-2 mb-6">
-            <!-- Sliding background -->
-            <div
-            class="absolute inset-y-0 left-0 w-1/2 bg-white rounded-full shadow-md transition-all duration-300"
-            :class="{ 'translate-x-0': active === 'data', 'translate-x-full': active === 'voice' }"
-            style="width: 50%;"
-            ></div>
-        
-            <!-- Button Data -->
-            <button
-            @click="active = 'data'"
-            class="relative z-10 px-6 py-2 rounded-full font-medium text-nubes-purple transition"
-            :class="{ 'font-semibold': active === 'data', 'text-nubes-purple/70': active !== 'data' }"
-            >
+          <div class="absolute inset-y-0 left-0 w-1/2 bg-white rounded-full shadow-md transition-all duration-300"
+              :class="{ 'translate-x-0': active === 'data', 'translate-x-full': active === 'voice' }"
+              style="width: 50%;"></div>
+
+          <button @click="active = 'data'" class="relative z-10 px-6 py-2 rounded-full font-medium text-nubes-purple transition"
+                  :class="{ 'font-semibold': active === 'data', 'text-nubes-purple/70': active !== 'data' }">
             Data
-            </button>
-        
-            <!-- Button Voice -->
-            <button
-            @click="active = 'voice'"
-            class="relative z-10 px-6 py-2 rounded-full font-medium text-nubes-purple transition"
-            :class="{ 'font-semibold': active === 'voice', 'text-nubes-purple/70': active !== 'voice' }"
-            >
+          </button>
+          <button @click="active = 'voice'" class="relative z-10 px-6 py-2 rounded-full font-medium text-nubes-purple transition"
+                  :class="{ 'font-semibold': active === 'voice', 'text-nubes-purple/70': active !== 'voice' }">
             Voice
-            </button>
+          </button>
         </div>
-      
-      <!-- Search Bar -->
+
+        <!-- Search Bar -->
         <div class="w-full max-w-lg relative mx-auto">
-            <span class="absolute left-6 top-1/2 -translate-y-1/2 text-nubes-purple">
+          <span class="absolute left-6 top-1/2 -translate-y-1/2 text-nubes-purple">
             <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
-            </span>
-            <input
-            type="text"
-            placeholder="Where are you going?"
-            class="w-full pl-16 pr-4 py-4 rounded-full border-0 focus:ring-2 focus:ring-nubes-yellow focus:ring-opacity-50 text-gray-900 placeholder-gray-400 bg-white font-medium shadow-lg"
-            />
+          </span>
+          <input type="text" placeholder="Where are you going?" class="w-full pl-16 pr-4 py-4 rounded-full border-0 focus:ring-2 focus:ring-nubes-yellow focus:ring-opacity-50 text-gray-900 placeholder-gray-400 bg-white font-medium shadow-lg" />
         </div>
-    </div>
-  
-    <!-- Carousel Banner -->
-    <div class="relative z-15 w-full flex justify-center mt-10 px-4">
+      </div>
+
+      <!-- Carousel Banner -->
+      <div class="relative z-15 w-full flex justify-center mt-10 px-4">
         <div class="w-full max-w-7xl">
-        <div class="swiper myBannerSwiper rounded-2xl overflow-hidden">
+          <div class="swiper myBannerSwiper rounded-2xl overflow-hidden pb-7">
             <div class="swiper-wrapper">
-    
-            <!-- Slide 1 -->
-            <div class="swiper-slide">
-                <div class="pixel-banner flex flex-col sm:flex-row items-center justify-between px-6 sm:px-10 py-0 bg-cover bg-center" style="min-height:160px; background-image: url('/image/ads/ads1-bg.png');">
-                <!-- Text -->
-                <div class="w-full sm:w-1/2 mb-6 sm:mb-0 sm:pr-4">
-                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">eSIM Data for 180+ countries</h2>
-                    <p class="text-lg text-purple-100">No More Bill Shocks</p>
+      
+              <!-- Slide 1 -->
+              <div class="swiper-slide">
+                <div class="pixel-banner flex flex-row items-center justify-between px-8 sm:px-8 bg-cover bg-center rounded-2xl overflow-hidden min-h-[90px] sm:min-h-[140px]"
+                     style="background-image: url('image/ads/ads1-bg.png');">
+      
+                  <!-- Teks -->
+                  <div class="w-[60%] sm:w-[48%] flex flex-col justify-center gap-2 pl-2 sm:pl-10">
+                    <h2 class="text-sm sm:text-[36px] font-bold text-white leading-snug">eSIM Data for 180+ countries</h2>
+                    <p class="text-xs sm:text-[24px] text-purple-100">No More Bill Shocks</p>
+                  </div>
+      
+                  <!-- Gambar -->
+                  <div class="w-[40%] sm:w-[34%] py-[2px] sm:py-0 rounded-2xl overflow-hidden flex items-center justify-start">
+                    <img src="image/ads/ads1.png" alt="Woman and Man" class="h-20 sm:h-48 w-auto object-contain" />
+                  </div>
                 </div>
-                <!-- Image -->
-                <div class="w-full sm:w-1/2 flex justify-center sm:justify-end items-end pt-2 sm:pt-0 h-full">
-                    <img src="/image/ads/ads1.png" alt="Woman and Men" class="h-full object-contain" />
-                </div>
-                </div>
-            </div>
-    
-            <!-- Slide 2 -->
-            <div class="swiper-slide">
-                <div class="pixel-banner flex flex-col sm:flex-row items-center justify-between px-6 sm:px-10 py-0 bg-cover bg-center" style="min-height:160px; background-image: url('/image/ads/ads1-bg.png');">
-                  <div class="w-full sm:w-1/2 mb-6 sm:mb-0 sm:pr-4">
-                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Review and Earn</h2>
-                    <p class="text-lg text-purple-100 mb-4">Share your experience & Earn credits</p>
-                    <a href="#" class="inline-block bg-[#FCCD40] text-white font-semibold py-2 px-4 hover:bg-yellow-400 transition rounded-full">
+              </div>
+      
+              <!-- Slide 2 -->
+              <div class="swiper-slide">
+                <div class="pixel-banner flex flex-row items-center justify-between px-8 sm:px-6 bg-cover bg-center rounded-2xl overflow-hidden min-h-[90px] sm:min-h-[140px]"
+                     style="background-image: url('image/ads/ads3-bg.png');">
+      
+                  <!-- Teks -->
+                  <div class="w-[60%] sm:w-[48%] flex flex-col justify-center gap-1 pl-2 sm:pl-10">
+                    <h2 class="text-sm sm:text-[36px] font-bold text-white leading-snug">Review and Earn</h2>
+                    <p class="text-xs sm:text-[24px] text-purple-100">Share your experience & Earn credits</p>
+                    <a href="#"
+                       class="mt-1 w-fit bg-[#FCCD40] text-white font-semibold text-xs sm:text-[20px] py-1 px-3 rounded-full hover:bg-yellow-400 transition">
                       Share to Learn More
                     </a>
                   </div>
-                  <div class="w-full sm:w-1/2 flex justify-center rounded-md sm:justify-end items-end pt-2 sm:pt-0 h-full">
-                    <img src="image/ads/ads2.png" alt="Placeholder" class="h-full object-contain" />
+      
+                  <!-- Gambar -->
+                  <div class="w-[40%] sm:w-[34%] py-[2px] sm:py-0 rounded-2xl overflow-hidden flex items-center justify-start">
+                    <img src="image/ads/ads4.png" alt="Review" class="h-20 sm:h-48 w-auto object-contain" />
                   </div>
                 </div>
-              </div>              
-    
-            <!-- Slide 3 -->
-            <div class="swiper-slide">
-                <div class="pixel-banner flex flex-col sm:flex-row items-center justify-between px-6 sm:px-10 py-0 bg-cover bg-center" style="min-height:160px; background-image: url('/image/ads/ads1-bg.png');">
-                <div class="w-full sm:w-1/2 mb-6 sm:mb-0 sm:pr-4">
-                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Refer a Friend. Get Credit</h2>
-                    <p class="text-lg text-purple-100">Give 25%. Get 25%. Everybody wins</p>
+              </div>
+      
+              <!-- Slide 3 -->
+              <div class="swiper-slide">
+                <div class="pixel-banner flex flex-row items-center justify-between px-8 sm:px-6 bg-cover bg-center rounded-2xl overflow-hidden min-h-[90px] sm:min-h-[140px]"
+                     style="background-image: url('image/ads/ads4-bg.png');">
+      
+                  <!-- Teks -->
+                  <div class="w-[60%] sm:w-[48%] flex flex-col justify-center gap-2 pl-2 sm:pl-10">
+                    <h2 class="text-sm sm:text-[36px] font-bold text-white leading-snug">Refer a Friend. Get Credit</h2>
+                    <p class="text-xs sm:text-[24px] text-purple-100">Give 25%. Get 25%. Everybody wins</p>
+                  </div>
+      
+                  <!-- Gambar -->
+                  <div class="w-[40%] sm:w-[34%] py-[2px] sm:py-0 rounded-2xl overflow-hidden flex items-center justify-start">
+                    <img src="image/ads/ads5.png" alt="Referral" class="h-20 sm:h-48 w-auto object-contain" />
+                  </div>
                 </div>
-                <div class="w-full sm:w-1/2 flex justify-center sm:justify-end items-end pt-2 sm:pt-0 h-full">
-                    <img src="image/ads/ads3.png" alt="Placeholder" class="h-full object-contain" />
+              </div>
+      
+              <!-- Slide 4 -->
+              <div class="swiper-slide">
+                <div class="pixel-banner flex flex-row items-center justify-between px-8 sm:px-6 bg-cover bg-center rounded-2xl overflow-hidden min-h-[90px] sm:min-h-[140px]"
+                     style="background-image: url('image/ads/ads2-bg.png');">
+      
+                  <!-- Teks -->
+                  <div class="w-[60%] sm:w-[48%] flex flex-col justify-center gap-2 pl-2 sm:pl-10">
+                    <h2 class="text-sm sm:text-[36px] font-bold text-white leading-snug">Stay Connected. Stay Trusted</h2>
+                    <p class="text-xs sm:text-[24px] text-purple-100">Your #1 eSIM for a Smooth Journey</p>
+                  </div>
+      
+                  <!-- Gambar -->
+                  <div class="w-[40%] sm:w-[34%] py-[2px] sm:py-0 rounded-2xl overflow-hidden flex items-center justify-start">
+                    <img src="image/ads/ads2.png" alt="Trust" class="h-20 sm:h-48 w-auto object-contain" />
+                  </div>
                 </div>
-                </div>
+              </div>
+      
             </div>
+      
+            <!-- Pagination -->
+            <div class="swiper-pagination mt-2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-            <!-- Slide 4 -->
-            <div class="swiper-slide">
-                <div class="pixel-banner flex flex-col sm:flex-row items-center justify-between px-6 sm:px-10 py-0 bg-cover bg-center" style="min-height:160px; background-image: url('/image/ads/ads2-bg.png');">
-                <div class="w-full sm:w-1/2 mb-6 sm:mb-0 sm:pr-4">
-                    <h2 class="text-2xl md:text-3xl font-bold text-white mb-2">Stay Connected. Stay Trusted</h2>
-                    <p class="text-lg text-purple-100">Your #1 eSIM for a Smooth Journey</p>
-                </div>
-                <div class="w-full sm:w-1/2 flex justify-center sm:justify-end items-end pt-2 sm:pt-0 h-full">
-                    <img src="image/ads/ads2.png" alt="Placeholder" class="h-full object-contain" />
-                </div>
-                </div>
-            </div>
-    
-            </div>
-    
-            <!-- Pagination dots -->
-            <div class="swiper-pagination !bottom-2"></div>
-        </div>
-        </div>
-    </div>
-  
-  </section>  
-    <!-- Choose Your Plan Type -->
+    <!-- Choose Your Plan Type Section -->
     <section class="py-12 bg-nubes-gray">
-    <div class="max-w-6xl mx-auto px-4">
-        <div class="text-center mb-8">
-        <h2 class="pixel-section-title mb-2">Choose Your Plan Type</h2>
-        <p class="text-gray-600">Whether you're visiting one country or exploring the world, we have the perfect plan for you.</p>
+        <div class="max-w-6xl mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-8">
+                <h2 class="pixel-section-title mb-2">Choose Your Plan Type</h2>
+                <p class="text-gray-600">Whether you're visiting one country or exploring the world, we have the perfect plan for you.</p>
+            </div>
+            
+            <!-- Plan Type Tabs -->
+            <div x-data="{ tab: 'single' }" class="flex justify-center mb-10">
+                <div class="relative bg-white rounded-full p-1 shadow-md flex w-[360px]">
+                    <!-- Active Tab Background -->
+                    <div class="absolute top-1 bottom-1 w-1/3 bg-nubes-purple rounded-full transition-all duration-300" :class="{ 'left-1': tab === 'single', 'left-1/3': tab === 'regional', 'left-2/3': tab === 'global' }"></div>
+                    
+                    <!-- Tab Buttons -->
+                    <button @click="tab = 'single'" class="relative z-10 w-1/3 text-sm font-medium px-3 py-2 rounded-full transition text-center whitespace-nowrap" :class="tab === 'single' ? 'text-white' : 'text-nubes-purple'">
+                        Single eSIM
+                    </button>
+                    
+                    <button @click="tab = 'regional'" class="relative z-10 w-1/3 text-sm font-medium px-3 py-2 rounded-full transition text-center whitespace-nowrap" :class="tab === 'regional' ? 'text-white' : 'text-nubes-purple'">
+                        Regional eSIM
+                    </button>
+                    
+                    <button @click="tab = 'global'" class="relative z-10 w-1/3 text-sm font-medium px-3 py-2 rounded-full transition text-center whitespace-nowrap" :class="tab === 'global' ? 'text-white' : 'text-nubes-purple'">
+                        Global eSIM
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Country Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/de.png" alt="Germany" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">Germany</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/us.png" alt="United States" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">United States</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/fr.png" alt="France" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">France</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/gb.png" alt="United Kingdom" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">United Kingdom</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/ma.png" alt="Morocco" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">Morocco</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/ca.png" alt="Canada" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">Canada</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/jp.png" alt="Japan" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">Japan</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/cn.png" alt="China" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">China</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/id.png" alt="Indonesia" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">Indonesia</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/tr.png" alt="Turkey" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">Turkey</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/au.png" alt="Australia" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">Australia</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/vn.png" alt="Vietnam" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">Vietnam</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <div class="w-6 h-4 bg-gray-300 rounded border flex items-center justify-center text-[10px] text-gray-600 font-bold">
+                        NA
+                    </div>
+                    <span class="text-gray-700 font-medium text-sm">North America</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/hk.png" alt="Hong Kong" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">Hong Kong</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/es.png" alt="Spain" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">Spain</span>
+                </button>
+                
+                <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
+                    <img src="https://flagcdn.com/w40/my.png" alt="Malaysia" class="w-6 h-4 rounded object-cover border" />
+                    <span class="text-gray-700 font-medium text-sm">Malaysia</span>
+                </button>
+            </div>
         </div>
-        <!-- Tambahkan di <head> jika belum -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    </section>
 
-    <!-- Tabs -->
-    <div x-data="{ tab: 'single' }" class="flex justify-center mb-10">
-        <div class="relative bg-white rounded-full p-1 shadow-md flex w-[360px]">
+    <!-- How to Get Your eSIM Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-6xl mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-12">
+                <h2 class="pixel-section-title mb-2">How to Get Your eSIM</h2>
+                <p class="text-gray-600">Get connected in just 3 simple steps</p>
+            </div>
+            
+            <!-- Steps Grid -->
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Step 1 -->
+                <div class="text-center">
+                    <img src="image/how-to/1.png" alt="App Welcome" class="mx-auto mb-4" />
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Download Nubes App</h3>
+                    <p class="text-nubes-purple text-sm underline cursor-pointer">here</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="text-center">
+                    <img src="image/how-to/2.png" alt="App List" class="mx-auto mb-4" />
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Select your destination</h3>
+                    <p class="text-gray-600 text-sm">and data plan</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="text-center">
+                    <img src="image/how-to/3.png" alt="QR Code" class="mx-auto mb-4" />
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Scan QR code to activate</h3>
+                    <p class="text-gray-600 text-sm">your eSIM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-16 bg-nubes-gray">
+        <div class="max-w-4xl mx-auto px-4">
+            <!-- Section Header -->
+            <div class="text-center mb-10">
+                <h2 class="pixel-section-title mb-2">Frequently Asked Questions</h2>
+                <p class="text-gray-600">Everything you need to know about eSIMs</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-5" id="faq-accordion">
+
+              <!-- What is eSIM -->
+              <div class="bg-white rounded-lg border border-gray-200 p-4 pixel-faq-card mb-2">
+                <button onclick="toggleFaq(0)" class="w-full text-left flex justify-between items-center focus:outline-none">
+                  <span class="font-medium text-gray-900 text-sm">What is an eSIM?</span>
+                  <svg class="w-4 h-4 text-gray-500" id="faq-icon-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="mt-2 text-gray-600 text-sm hidden" id="faq-content-0">
+                  An eSIM is a digital SIM that lets you activate a data plan without using a physical SIM card.
+                </div>
+              </div>
+            
+              <!-- Compatibility check -->
+              <div class="bg-white rounded-lg border border-gray-200 p-4 pixel-faq-card mb-2">
+                <button onclick="toggleFaq(1)" class="w-full text-left flex justify-between items-center focus:outline-none">
+                  <span class="font-medium text-gray-900 text-sm">How do I check if my phone supports eSIM?</span>
+                  <svg class="w-4 h-4 text-gray-500" id="faq-icon-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="mt-2 text-gray-600 text-sm hidden" id="faq-content-1">
+                  The easiest way is to download the Nubes App. If your phone isn’t compatible, it will say “eSIM Not Supported.” Also check: Settings &gt; General &gt; About &gt; Carrier Lock. If it says “No SIM restrictions,” your device is unlocked.
+                </div>
+              </div>
+            
+              <!-- When to install -->
+              <div class="bg-white rounded-lg border border-gray-200 p-4 pixel-faq-card mb-2">
+                <button onclick="toggleFaq(2)" class="w-full text-left flex justify-between items-center focus:outline-none">
+                  <span class="font-medium text-gray-900 text-sm">When should I install my Nubes eSIM?</span>
+                  <svg class="w-4 h-4 text-gray-500" id="faq-icon-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="mt-2 text-gray-600 text-sm hidden" id="faq-content-2">
+                  We recommend installing it on the day of your travel to ensure a smooth connection once you arrive. A stable internet connection is required during installation.
+                </div>
+              </div>
+            
+              <!-- Can I hotspot -->
+              <div class="bg-white rounded-lg border border-gray-200 p-4 pixel-faq-card mb-2">
+                <button onclick="toggleFaq(3)" class="w-full text-left flex justify-between items-center focus:outline-none">
+                  <span class="font-medium text-gray-900 text-sm">Can I use my eSIM as a hotspot?</span>
+                  <svg class="w-4 h-4 text-gray-500" id="faq-icon-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="mt-2 text-gray-600 text-sm hidden" id="faq-content-3">
+                  Yes, you can share your eSIM data with other devices using the mobile hotspot feature.
+                </div>
+              </div>
+            
+              <!-- Transfer to new device -->
+              <div class="bg-white rounded-lg border border-gray-200 p-4 pixel-faq-card mb-2">
+                <button onclick="toggleFaq(4)" class="w-full text-left flex justify-between items-center focus:outline-none">
+                  <span class="font-medium text-gray-900 text-sm">Can I transfer my eSIM to a new device?</span>
+                  <svg class="w-4 h-4 text-gray-500" id="faq-icon-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="mt-2 text-gray-600 text-sm hidden" id="faq-content-4">
+                  You can transfer it before activation. Once the eSIM is installed, it cannot be moved to another device.
+                </div>
+              </div>
+            
+              <!-- No connection -->
+              <div class="bg-white rounded-lg border border-gray-200 p-4 pixel-faq-card mb-2">
+                <button onclick="toggleFaq(5)" class="w-full text-left flex justify-between items-center focus:outline-none">
+                  <span class="font-medium text-gray-900 text-sm">What should I do if my eSIM doesn’t connect?</span>
+                  <svg class="w-4 h-4 text-gray-500" id="faq-icon-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="mt-2 text-gray-600 text-sm hidden" id="faq-content-5">
+                  Make sure you're in the destination country, data roaming is on, and Nubes eSIM is selected as your active data line. Try toggling airplane mode or manually selecting a network if needed.
+                </div>
+              </div>
+            
+              <!-- Call and text -->
+              <div class="bg-white rounded-lg border border-gray-200 p-4 pixel-faq-card mb-2">
+                <button onclick="toggleFaq(6)" class="w-full text-left flex justify-between items-center focus:outline-none">
+                  <span class="font-medium text-gray-900 text-sm">Does the Nubes eSIM include call or text services?</span>
+                  <svg class="w-4 h-4 text-gray-500" id="faq-icon-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                <div class="mt-2 text-gray-600 text-sm hidden" id="faq-content-6">
+                  No, Nubes eSIMs are data-only and do not include voice calls or SMS.
+                </div>
+              </div>
+            
+            </div>            
+            
+            <!-- Learn More Button -->
+            <div class="text-center mt-8">
+                <button class="text-nubes-purple font-medium text-sm underline">Learn more</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Help Section -->
+    <section class="py-10">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold text-nubes-purple mb-6">Need More Help?</h2>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button class="pixel-help-btn flex items-center justify-center">
+                    <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.690"/>
+                    </svg>
+                    Whatsapp
+                </button>
+                
+                <button class="pixel-help-btn flex items-center justify-center">
+                    Support@nubes.com
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Download Section -->
+    <section class="py-16 bg-nubes-gray">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Phone Mockup -->
+                <div class="flex justify-center space-x-8">
+                    <div class="CTA-phone-pict flex justify-center mt-12">
+                        <img src="image/CTA-phone-pict.png" alt="Download Nubes App Mockup" class="w-[280px] md:w-[360px] lg:w-[420px] h-auto" />
+                    </div>
+                </div>
+                
+                <!-- Content -->
+                <div>
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">Download the Nubes App Today</h2>
+                    <p class="text-gray-600 mb-8">Manage your eSIMs, track usage, and purchase new plans on the go with our mobile app.</p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button class="pixel-app-btn flex items-center justify-center">
+                            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                            </svg>
+                            App Store
+                        </button>
+                        
+                        <button class="pixel-app-btn flex items-center justify-center">
+                            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                            </svg>
+                            Google Play
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="pixel-footer text-white py-16 bg-nubes-dark">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-10 text-center md:text-left">
           
-          <!-- Geser latar aktif -->
-          <div
-            class="absolute top-1 bottom-1 w-1/3 bg-nubes-purple rounded-full transition-all duration-300"
-            :class="{
-              'left-1': tab === 'single',
-              'left-1/3': tab === 'regional',
-              'left-2/3': tab === 'global'
-            }"
-          ></div>
-      
-          <!-- Tab 1 -->
-          <button
-            @click="tab = 'single'"
-            class="relative z-10 w-1/3 text-sm font-medium px-3 py-2 rounded-full transition text-center whitespace-nowrap"
-            :class="tab === 'single' ? 'text-white' : 'text-nubes-purple'"
-          >
-            Single eSIM
-          </button>
-      
-          <!-- Tab 2 -->
-          <button
-            @click="tab = 'regional'"
-            class="relative z-10 w-1/3 text-sm font-medium px-3 py-2 rounded-full transition text-center whitespace-nowrap"
-            :class="tab === 'regional' ? 'text-white' : 'text-nubes-purple'"
-          >
-            Regional eSIM
-          </button>
-      
-          <!-- Tab 3 -->
-          <button
-            @click="tab = 'global'"
-            class="relative z-10 w-1/3 text-sm font-medium px-3 py-2 rounded-full transition text-center whitespace-nowrap"
-            :class="tab === 'global' ? 'text-white' : 'text-nubes-purple'"
-          >
-            Global eSIM
-          </button>
+          <!-- Logo -->
+          <div class="flex justify-center md:justify-start">
+            <img src="image/logo-footer.png" alt="Nubes Logo" class="h-60 w-auto" />
+          </div>
+    
+          <!-- Popular Country -->
+          <div>
+            <h3 class="pixel-footer-title text-base font-semibold mb-4">Popular Country</h3>
+            <ul class="space-y-2 text-sm md:text-sm text-white/90">
+              <li><a href="#" class="pixel-footer-link">America</a></li>
+              <li><a href="#" class="pixel-footer-link">Japan</a></li>
+              <li><a href="#" class="pixel-footer-link">Turkey</a></li>
+              <li><a href="#" class="pixel-footer-link">Hong Kong</a></li>
+              <li><a href="#" class="pixel-footer-link">United Kingdom</a></li>
+              <li><a href="#" class="pixel-footer-link">Germany</a></li>
+              <li><a href="#" class="pixel-footer-link">Canada</a></li>
+            </ul>
+          </div>
+    
+          <!-- About Us -->
+          <div>
+            <h3 class="pixel-footer-title text-base font-semibold mb-4">About Us</h3>
+            <ul class="space-y-2 text-sm text-white/90">
+              <li><a href="#" class="pixel-footer-link">About Nubes</a></li>
+              <li><a href="#" class="pixel-footer-link">Blog</a></li>
+            </ul>
+          </div>
+    
+          <!-- More Info -->
+          <div>
+            <h3 class="pixel-footer-title text-base font-semibold mb-4">More Info</h3>
+            <ul class="space-y-2 text-sm text-white/90">
+              <li><a href="#" class="pixel-footer-link">FAQ</a></li>
+              <li><a href="#" class="pixel-footer-link">Terms of Service</a></li>
+              <li><a href="#" class="pixel-footer-link">Privacy Policy</a></li>
+            </ul>
+          </div>
+    
+          <!-- Sosmed & Stores -->
+          <div class="flex flex-col items-center md:items-end space-y-6">
+            <!-- Sosmed -->
+            <div class="flex space-x-4 justify-center">
+              <a href="#"><img src="image/social-media/instagram.png" alt="Instagram" class="w-6 h-6" /></a>
+              <a href="#"><img src="image/social-media/facebook.png" alt="Facebook" class="w-6 h-6" /></a>
+              <a href="#"><img src="image/social-media/linkedin.png" alt="LinkedIn" class="w-6 h-6" /></a>
+              <a href="#"><img src="image/social-media/youtube.png" alt="YouTube" class="w-6 h-6" /></a>
+              <a href="#"><img src="image/social-media/tiktok.png" alt="TikTok" class="w-6 h-6" /></a>
+              <a href="#"><img src="image/social-media/twitter.png" alt="Twitter" class="w-6 h-6" /></a>
+            </div>
+    
+            <!-- Store Buttons -->
+            <div class="flex flex-col items-center md:items-end space-y-3">
+              <a href="#"><img src="image/google-play.png" alt="Google Play" class="h-10 rounded-md shadow-md hover:scale-105 transition" /></a>
+              <a href="#"><img src="image/app-store.png" alt="App Store" class="h-10 rounded-md shadow-md hover:scale-105 transition" /></a>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Copyright -->
+        <div class="border-t border-purple-500 mt-12 pt-6 text-center text-sm text-white/70">
+          © <span id="year"></span> Nubes. All rights reserved.
         </div>
       </div>
-      
+    </footer>       
 
-    <!-- Country Grid -->
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-5">
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/de.png" alt="Germany" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">Germany</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/us.png" alt="United States" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">United States</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/fr.png" alt="France" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">France</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/gb.png" alt="United Kingdom" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">United Kingdom</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/ma.png" alt="Morocco" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">Morocco</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/ca.png" alt="Canada" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">Canada</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/jp.png" alt="Japan" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">Japan</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/cn.png" alt="China" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">China</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/id.png" alt="Indonesia" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">Indonesia</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/tr.png" alt="Turkey" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">Turkey</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/au.png" alt="Australia" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">Australia</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/vn.png" alt="Vietnam" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">Vietnam</span>
-        </button>
-      
-        <!-- North America is not a country, no official flag -->
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <div class="w-6 h-4 bg-gray-300 rounded border flex items-center justify-center text-[10px] text-gray-600 font-bold">
-            NA
-          </div>
-          <span class="text-gray-700 font-medium text-sm">North America</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/hk.png" alt="Hong Kong" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">Hong Kong</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/es.png" alt="Spain" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">Spain</span>
-        </button>
-      
-        <button class="bg-white rounded-lg p-4 pixel-country hover:shadow-lg transition flex items-center space-x-3">
-          <img src="https://flagcdn.com/w40/my.png" alt="Malaysia" class="w-6 h-4 rounded object-cover border" />
-          <span class="text-gray-700 font-medium text-sm">Malaysia</span>
-        </button>
-      </div>      
-  </div>
-</section>
-<!-- How to Get Your eSIM -->
-<section class="py-16 bg-white">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="text-center mb-12">
-      <h2 class="pixel-section-title mb-2">How to Get Your eSIM</h2>
-      <p class="text-gray-600">Get connected in just 3 simple steps</p>
-    </div>
-    <div class="grid md:grid-cols-3 gap-10">
-      <!-- Step 1 -->
-      <div class="text-center">
-        <img src="image/how-to/1.png" alt="App Welcome" class="mx-auto mb-4" />
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">Download Nubes App</h3>
-        <p class="text-nubes-purple text-sm underline cursor-pointer">here</p>
-      </div>          
-      <!-- Step 2 -->
-      <div class="text-center">
-        <img src="image/how-to/2.png" alt="App List" class="mx-auto mb-4" />
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">Select your destination</h3>
-        <p class="text-gray-600 text-sm">and data plan</p>
-      </div>
-      
-      <!-- Step 3 -->
-      <div class="text-center">
-        <img src="image/how-to/3.png" alt="QR Code" class="mx-auto mb-4" />
-        <h3 class="text-lg font-semibold text-gray-900 mb-2">Scan QR code to activate</h3>
-        <p class="text-gray-600 text-sm">your eSIM</p>
-      </div>
-      
-    </div>
-  </div>
-</section>
-<!-- FAQ Section -->
-<section class="py-16 bg-nubes-gray">
-  <div class="max-w-4xl mx-auto px-4">
-    <div class="text-center mb-10">
-      <h2 class="pixel-section-title mb-2">Frequently Asked Questions</h2>
-      <p class="text-gray-600">Everything you need to know about eSIMs</p>
-    </div>
-    <div class="grid md:grid-cols-2 gap-5" id="faq-accordion">
-      <div class="bg-white rounded-lg border border-gray-200 p-4 pixel-faq-card mb-2">
-        <button onclick="toggleFaq(0)" class="w-full text-left flex justify-between items-center focus:outline-none">
-          <span class="font-medium text-gray-900 text-sm">What is eSIM?</span>
-          <svg class="w-4 h-4 text-gray-500 pixel-faq-arrow" id="faq-icon-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="mt-2 text-gray-600 text-sm hidden" id="faq-content-0">eSIM adalah SIM digital yang memungkinkan Anda mengaktifkan paket seluler tanpa kartu fisik.</div>
-      </div>
-      <div class="bg-white rounded-lg border border-gray-200 p-4 pixel-faq-card mb-2">
-        <button onclick="toggleFaq(1)" class="w-full text-left flex justify-between items-center focus:outline-none">
-          <span class="font-medium text-gray-900 text-sm">When Should I install my Nubes eSIM?</span>
-          <svg class="w-4 h-4 text-gray-500 pixel-faq-arrow" id="faq-icon-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="mt-2 text-gray-600 text-sm hidden" id="faq-content-1">Install eSIM saat Anda siap bepergian atau sesuai instruksi di aplikasi.</div>
-      </div>
-      <div class="bg-white rounded-lg border border-gray-200 p-4 pixel-faq-card mb-2">
-        <button onclick="toggleFaq(2)" class="w-full text-left flex justify-between items-center focus:outline-none">
-          <span class="font-medium text-gray-900 text-sm">Is my phone compatible with eSIM?</span>
-          <svg class="w-4 h-4 text-gray-500 pixel-faq-arrow" id="faq-icon-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="mt-2 text-gray-600 text-sm hidden" id="faq-content-2">Sebagian besar ponsel terbaru sudah mendukung eSIM. Cek pengaturan perangkat Anda.</div>
-      </div>
-      <div class="bg-white rounded-lg border border-gray-200 p-4 pixel-faq-card mb-2">
-        <button onclick="toggleFaq(3)" class="w-full text-left flex justify-between items-center focus:outline-none">
-          <span class="font-medium text-gray-900 text-sm">Can I hotspot to other devices?</span>
-          <svg class="w-4 h-4 text-gray-500 pixel-faq-arrow" id="faq-icon-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="mt-2 text-gray-600 text-sm hidden" id="faq-content-3">Ya, Anda bisa berbagi koneksi internet eSIM ke perangkat lain.</div>
-      </div>
-      <div class="bg-white rounded-lg border border-gray-200 p-4 pixel-faq-card mb-2">
-        <button onclick="toggleFaq(4)" class="w-full text-left flex justify-between items-center focus:outline-none">
-          <span class="font-medium text-gray-900 text-sm">What happens after I make a purchase?</span>
-          <svg class="w-4 h-4 text-gray-500 pixel-faq-arrow" id="faq-icon-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="mt-2 text-gray-600 text-sm hidden" id="faq-content-4">Anda akan menerima instruksi aktivasi eSIM melalui email atau aplikasi.</div>
-      </div>
-      <div class="bg-white rounded-lg border border-gray-200 p-4 pixel-faq-card mb-2">
-        <button onclick="toggleFaq(5)" class="w-full text-left flex justify-between items-center focus:outline-none">
-          <span class="font-medium text-gray-900 text-sm">I failed to activate my eSIM</span>
-          <svg class="w-4 h-4 text-gray-500 pixel-faq-arrow" id="faq-icon-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-        </button>
-        <div class="mt-2 text-gray-600 text-sm hidden" id="faq-content-5">Silakan hubungi support kami untuk bantuan lebih lanjut.</div>
-      </div>
-    </div>
-    <div class="text-center mt-8">
-      <button class="text-nubes-purple font-medium text-sm underline">Learn more</button>
-    </div>
-  </div>
-  <script>
-    function toggleFaq(idx) {
-      for (let i = 0; i < 6; i++) {
-        const content = document.getElementById('faq-content-' + i);
-        const icon = document.getElementById('faq-icon-' + i);
-        if (i === idx) {
-          const isOpen = !content.classList.contains('hidden');
-          content.classList.toggle('hidden');
-          icon.classList.toggle('open');
-        } else {
-          content.classList.add('hidden');
-          icon.classList.remove('open');
+    <!-- JavaScript -->
+    <script>
+        // FAQ Toggle Function
+        function toggleFaq(idx) {
+            for (let i = 0; i <= 6; i++) {
+                const content = document.getElementById('faq-content-' + i);
+                const icon = document.getElementById('faq-icon-' + i);
+                
+                if (i === idx) {
+                    const isOpen = !content.classList.contains('hidden');
+                    content.classList.toggle('hidden');
+                    icon.classList.toggle('open');
+                } else {
+                    content.classList.add('hidden');
+                    icon.classList.remove('open');
+                }
+            }
         }
-      }
-    }
-  </script>
-</section>
-<!-- Help Section -->
-<section class="py-10">
-  <div class="max-w-4xl mx-auto px-4 text-center">
-    <h2 class="text-2xl font-bold text-nubes-purple mb-6">Need More Help?</h2>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <button class="pixel-help-btn flex items-center justify-center">
-        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0020.885 3.690"/></svg>
-        Whatsapp
-      </button>
-      <button class="pixel-help-btn flex items-center justify-center">
-        Support@nubes.com
-      </button>
-    </div>
-  </div>
-</section>
-<!-- App Download Section -->
-<section class="py-16 bg-nubes-gray">
-  <div class="max-w-6xl mx-auto px-4">
-    <div class="grid lg:grid-cols-2 gap-12 items-center">
-      <div class="flex justify-center space-x-8">
-        <div class="CTA-phone-pict flex justify-center mt-12">
-            <img 
-              src="/image/cta-phone-pict.png" 
-              alt="Download Nubes App Mockup" 
-              class="w-[280px] md:w-[360px] lg:w-[420px] h-auto"
-            />
-          </div>
-      </div>
-      <div>
-        <h2 class="text-3xl font-bold text-gray-900 mb-6">Download the Nubes App Today</h2>
-        <p class="text-gray-600 mb-8">Manage your eSIMs, track usage, and purchase new plans on the go with our mobile app.</p>
-        <div class="flex flex-col sm:flex-row gap-4">
-          <button class="pixel-app-btn flex items-center justify-center">
-            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-            App Store
-          </button>
-          <button class="pixel-app-btn flex items-center justify-center">
-            <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/></svg>
-            Google Play
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-<!-- Footer -->
-<footer class="pixel-footer text-white py-16">
-    <div class="max-w-7xl mx-auto px-4">
-      <div class="grid md:grid-cols-5 gap-8"> <!-- diubah dari 4 ke 5 -->
-        <div>
-          <div class="mb-6">
-            <img src="/image/logo-footer.png" alt="Nubes Logo" class="h-60 w-auto" />
-          </div>
-        </div>
-        <div>
-          <div class="pixel-footer-title">Popular Country</div>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#" class="pixel-footer-link">America</a></li>
-            <li><a href="#" class="pixel-footer-link">Japan</a></li>
-            <li><a href="#" class="pixel-footer-link">Turkey</a></li>
-            <li><a href="#" class="pixel-footer-link">Hong Kong</a></li>
-            <li><a href="#" class="pixel-footer-link">United Kingdom</a></li>
-            <li><a href="#" class="pixel-footer-link">Germany</a></li>
-            <li><a href="#" class="pixel-footer-link">Canada</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="pixel-footer-title">About Us</div>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#" class="pixel-footer-link">About Nubes</a></li>
-            <li><a href="#" class="pixel-footer-link">Blog</a></li>
-          </ul>
-        </div>
-        <div>
-          <div class="pixel-footer-title">More Info</div>
-          <ul class="space-y-2 text-sm">
-            <li><a href="#" class="pixel-footer-link">FAQ</a></li>
-            <li><a href="#" class="pixel-footer-link">Terms of Service</a></li>
-            <li><a href="#" class="pixel-footer-link">Privacy Policy</a></li>
-          </ul>
-        </div>
-  
-    <!-- Kolom Media Sosial & Store -->
-<div class="flex flex-col items-end space-y-6">
 
-    <!-- Media Sosial -->
-    <div class="flex space-x-4">
-      <!-- Instagram -->
-      <a href="#" class="text-white hover:text-nubes-pink transition" aria-label="Instagram">
-        <img src="/image/social-media/instagram.png" alt="Instagram" class="w-6 h-6" />
-      </a>
-  
-      <!-- Facebook -->
-      <a href="#" class="text-white hover:text-nubes-pink transition" aria-label="Facebook">
-        <img src="/image/social-media/facebook.png" alt="Facebook" class="w-6 h-6" />
-      </a>
-  
-      <!-- LinkedIn -->
-      <a href="#" class="text-white hover:text-nubes-pink transition" aria-label="LinkedIn">
-        <img src="/image/social-media/linkedin.png" alt="LinkedIn" class="w-6 h-6" />
-      </a>
-  
-      <!-- YouTube -->
-      <a href="#" class="text-white hover:text-nubes-pink transition" aria-label="YouTube">
-        <img src="/image/social-media/youtube.png" alt="YouTube" class="w-6 h-6" />
-      </a>
-  
-      <!-- TikTok -->
-      <a href="#" class="text-white hover:text-nubes-pink transition" aria-label="TikTok">
-        <img src="/image/social-media/tiktok.png" alt="TikTok" class="w-6 h-6" />
-      </a>
+        // copyright year
+        document.getElementById("year").textContent = new Date().getFullYear();
 
-      <!-- X (Twitter) -->
-      <a href="#" class="text-white hover:text-nubes-pink transition" aria-label="Twitter">
-        <img src="/image/social-media/twitter.png" alt="Twitter" class="w-6 h-6" />
-      </a>
-
-    </div>
-  
-    <!-- Store Buttons -->
-    <div class="flex flex-col items-end space-y-3">
-        <!-- Google Play -->
-        <a href="#">
-            <img
-            src="/image/google-play.png"
-            alt="Get it on Google Play"
-            class="h-10 w-auto object-contain rounded-md shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200"
-            />
-        </a>
-        
-        <!-- App Store -->
-        <a href="#">
-            <img
-            src="/image/app-store.png"
-            alt="Download on the App Store"
-            class="h-10 w-auto object-contain rounded-md shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200"
-            />
-        </a>
-    </div>
-  </div>
-      </div>
-      <div class="border-t border-purple-400 mt-12 pt-8 text-center">
-        <p class="pixel-footer-copyright">©2025 Nubes</p>
-      </div>
-    </div>
-  </footer>
-  
+        // Swiper Initialization
+        const swiper = new Swiper(".myBannerSwiper", {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            }
+        });
+    </script>
 </body>
-
-<script>
-    const swiper = new Swiper(".myBannerSwiper", {
-      loop: true,
-      autoplay: {
-        delay: 5000,
-        disableOnInteraction: false
-      },
-      pagination: {
-        el: ".swiper-pagination",
-        clickable: true
-      }
-    });
-  </script>
-  
 </html>
