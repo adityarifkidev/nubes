@@ -1,0 +1,540 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="image/logo-footer1.svg">
+    <title>Nubes - Travel with instant eSIM connectivity</title>
+    
+    <!-- External Scripts and Styles -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'nubes-purple': '#A259C6',
+                        'nubes-pink': '#EC4899',
+                        'nubes-yellow': '#FFD600',
+                        'nubes-blue': '#3B82F6',
+                        'nubes-green': '#10B981',
+                        'nubes-gray': '#F3F4F6',
+                        'nubes-dark': '#1F2937',
+                        'nubes-footer': '#7B2FF2',
+                        'nubes-footer2': '#F357A8',
+                    },
+                    fontFamily: {
+                        'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom Styles -->
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif; 
+        }
+        
+        /* Shadow Utilities */
+        .pixel-shadow { 
+            box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08); 
+        }
+        .pixel-shadow-md { 
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); 
+        }
+        .pixel-shadow-lg { 
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.12); 
+        }
+        
+        /* Tab Styles */
+        .pixel-tab-active { 
+            background: #A259C6; 
+            color: #fff; 
+        }
+        .pixel-tab-inactive { 
+            background: #F3F4F6; 
+            color: #222; 
+        }
+        
+        /* FAQ Styles */
+        .pixel-faq-arrow { 
+            transition: transform 0.2s; 
+        }
+        .pixel-faq-arrow.open { 
+            transform: rotate(180deg); 
+        }
+        .pixel-faq-card { 
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); 
+            border-radius: 16px; 
+        }
+        
+        /* Button Styles */
+        .pixel-btn { 
+            box-shadow: 0 2px 8px 0 rgba(236,72,153,0.15); 
+        }
+        .pixel-navbar-btn { 
+            background: #EC4899; 
+            color: #fff; 
+            border-radius: 9999px; 
+            font-weight: 600; 
+            padding: 6px 20px; 
+            font-size: 15px; 
+        }
+        .pixel-navbar-signin { 
+            background: #fff; 
+            color: #EC4899; 
+            border: 2px solid #EC4899; 
+            border-radius: 9999px; 
+            font-weight: 600; 
+            padding: 6px 20px; 
+            font-size: 15px; 
+        }
+        .pixel-navbar-signin:hover { 
+            background: #EC4899; 
+            color: #fff; 
+        }
+        
+        /* Hero Section Styles */
+        .pixel-banner { 
+            box-shadow: 0 8px 32px 0 rgba(162,89,198,0.18); 
+        }
+        .pixel-search { 
+            box-shadow: 0 2px 8px 0 rgba(162,89,198,0.10); 
+            font-size: 18px; 
+        }
+        .pixel-hero-btn { 
+            font-size: 18px; 
+            font-weight: 700; 
+            border-radius: 9999px; 
+            padding: 12px 40px; 
+        }
+        .pixel-hero-btn.selected { 
+            background: #fff; 
+            color: #A259C6; 
+        }
+        .pixel-hero-btn.unselected { 
+            background: #fff; 
+            color: #A259C6; 
+            opacity: 0.5; 
+        }
+        
+        /* Card and Country Styles */
+        .pixel-card { 
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); 
+        }
+        .pixel-country { 
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); 
+        }
+        
+        /* Section Title */
+        .pixel-section-title { 
+            font-size: 32px; 
+            font-weight: 700; 
+            color: #A259C6; 
+        }
+        
+        /* Help and App Button Styles */
+        .pixel-help-btn { 
+            background: #EC4899; 
+            color: #fff; 
+            border-radius: 12px; 
+            font-weight: 600; 
+            font-size: 17px; 
+            padding: 14px 40px; 
+        }
+        .pixel-help-btn svg { 
+            margin-right: 8px; 
+        }
+        .pixel-app-btn { 
+            background: #000; 
+            color: #fff; 
+            border-radius: 12px; 
+            font-weight: 600; 
+            font-size: 17px; 
+            padding: 14px 32px; 
+        }
+        .pixel-app-btn svg { 
+            margin-right: 8px; 
+        }
+        
+        /* Footer Styles */
+        .pixel-footer { 
+            background: linear-gradient(90deg, #7B2FF2 0%, #F357A8 100%); 
+        }
+        .pixel-footer-link { 
+            color: #D1B3F7; 
+        }
+        .pixel-footer-link:hover { 
+            color: #fff; 
+        }
+        .pixel-footer-title { 
+            font-size: 18px; 
+            font-weight: 600; 
+            margin-bottom: 16px; 
+        }
+        .pixel-footer-social { 
+            color: #D1B3F7; 
+            margin-right: 12px; 
+        }
+        .pixel-footer-social:hover { 
+            color: #fff; 
+        }
+        .pixel-footer-copyright { 
+            color: #D1B3F7; 
+            font-size: 15px; 
+            margin-top: 32px; 
+        }
+        
+        /* Pagination Dots */
+        .pixel-dot { 
+            width: 12px; 
+            height: 12px; 
+            border-radius: 9999px; 
+            margin: 0 3px; 
+            display: inline-block; 
+        }
+        .pixel-dot.active { 
+            background: #fff; 
+        }
+        .pixel-dot.inactive { 
+            background: rgba(255,255,255,0.5); 
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <!-- Navigation Bar -->
+    <nav class="w-full bg-white shadow-sm sticky top-0 z-50" x-data="{ mobileOpen: false }">
+      <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
+        
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <a href="index.html">
+            <img src="image/logo-heading.svg" alt="Nubes Logo" class="h-10 w-auto" />
+          </a>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="about-us.html" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
+          <a href="quick-guide.html" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
+          <!-- Help Center Dropdown -->
+          <div x-data="{ open: false }" class="relative inline-block text-left">
+            <button @click="open = !open" class="flex items-center gap-1 text-gray-700 hover:text-nubes-purple text-sm font-medium focus:outline-none">
+              Help Center
+              <svg class="w-4 h-4 transform transition-transform duration-200" :class="{ 'rotate-180': open }" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.96l3.71-3.73a.75.75 0 111.08 1.04l-4.25 4.25a.75.75 0 01-1.08 0L5.21 8.27a.75.75 0 01.02-1.06z" clip-rule="evenodd" />
+              </svg>
+            </button>
+            <div x-show="open" @click.away="open = false" x-transition class="absolute left-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-lg z-20">
+              <a href="/faq" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
+              <hr class="my-1 border-gray-200" />
+              <a href="/contact" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
+            </div>
+          </div>
+          <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
+        </div>
+
+        <!-- Right Side Buttons -->
+        <div class="hidden md:flex items-center space-x-3">
+          <button class="pixel-navbar-btn">EN – USD $</button>
+          <button class="pixel-navbar-signin flex items-center transition">
+            Sign In
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Hamburger Button -->
+        <div class="md:hidden flex items-center">
+          <button @click="mobileOpen = !mobileOpen" class="text-gray-700 focus:outline-none" aria-label="Toggle mobile menu">
+            <span class="sr-only">Toggle mobile menu</span>
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path :class="{ 'hidden': mobileOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M4 6h16M4 12h16M4 18h16" />
+              <path :class="{ 'hidden': !mobileOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Menu -->
+      <div x-show="mobileOpen" class="md:hidden px-6 pb-4 flex flex-col items-center space-y-3 text-center">
+        <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
+        <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
+        <a href="/faq" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">FAQ</a>
+        <a href="/contact" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Contact Us</a>
+        <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
+      
+        <div class="pt-2 flex flex-col items-center gap-2 w-full">
+          <button class="pixel-navbar-btn w-full text-center">EN – USD $</button>
+        </div>
+      </div>      
+    </nav>
+
+    <main class="max-w-4xl mx-auto px-4 py-12">
+        <h1 class="text-center text-[#8D4794] font-bold text-5xl mb-6">Privacy Policy</h1>
+        <ol class="list-decimal space-y-6 pl-5">
+          <li>
+            Alpha Televoice Ltd. doing business as NubesSIM (<a href="https://nubesSIM.com" class="text-nubes-purple underline">NubesSIM.com</a>), recognizes the importance of your privacy. This privacy policy tells you what personal information we collect and how we use it. NubesSIM may change this privacy policy from time to time, in its sole discretion, as discussed in section '8. Changes to This Policy' below. By registering an account or otherwise using or visiting any NubesSIM website, application, product, software, tool, data feed, and/or service (collectively the “Service”), you understand and agree to the terms of this policy. Please read this policy carefully.
+          </li>
+          <li>
+            If you have an unresolved privacy or data use concern that we have not addressed satisfactorily, please contact us directly at <a href="mailto:service@NubesSIM.com" class="text-nubes-purple underline">service@NubesSIM.com</a> or find more information under section '6. How Does a User Change or Update Information'.
+          </li>
+          <li>
+            NubesSIM is committed to your privacy. This privacy notice explains how we collect, use, disclose, retain, and protect your personal information.
+          </li>
+          <li>
+            A few key principles regarding General Data Protection Regulation (GDPR): A clear purpose: the controller must specifically inform the customer of the use he will make of his personal data by collecting them. Relevant data: the controller must only collect data that is strictly necessary for his treatment; this is the principle of minimizing collection. The retention period: the personal data must be kept enough time to the controller to achieve its purpose; beyond that time, the data must be deleted. The rights of individuals: individuals can exercise their rights over the personal data held by the controller: access, rectification or deletion.
+          </li>
+        </ol>
+
+        <!--Sectin 1-->
+
+        <section class="mb-10">
+            <h2 class="text-xl font-bold mb-2">1. What Information Do We Collect?</h2>
+          
+            <h3 class="font-semibold mt-4 mb-1">1.1 Personally-Identifiable Information</h3>
+            <p>We may collect personally identifiable information when you specifically and knowingly provide it to us, for example when you sign up for our newsletter or chat, create an account, request more information on our contact us page, respond to a survey or questionnaire and provide personal information such as your email address, name, phone number or other information. Where applicable, personally identifiable information includes personal data as defined in applicable law.</p>
+            <p>This Privacy Policy does not apply to the privacy practices of third parties that we do not own or control, including but not limited to any third-party websites, services, applications, online resources to which this Site may link or otherwise reference (collectively Third-Party Services or TPS) that you may access through the Services. We take no responsibility for the content or privacy practices of any TPS. We encourage you to carefully review the privacy policies of any TPS you access.</p>
+            <p>NubesSIM does not consider personally identifiable information to include information that has been anonymized so that it does not allow a third party to identify a specific individual. We collect and use your personally-identifiable information to provide the services, operate and improve our service, provide customer service, perform research and analysis aimed at improving our products, service and technology, and display content that is customized to your interests and preferences.</p>
+            <p>You may always choose not to provide personally identifiable information, but if you choose so, certain parts of the Service may not be available to you. If you have registered an account with us, you will have agreed to provide your personally identifiable information in order to access the services. This consent provides us with the legal basis we require under applicable law to process your data. You maintain the right to withdraw such consent at any time. If you do not agree to our use of your personal data in line with this policy, please do not use our Services.</p>
+          
+            <h3 class="font-semibold mt-4 mb-1">1.2 Sensitive Personal Data</h3>
+            <p>Subject to the following paragraph, we ask that you do not send us, and you do not disclose, any sensitive personal data (e.g., social security numbers, information related to racial or ethnic origin, political opinions, religion or other beliefs, health, biometrics or genetic characteristics, criminal background or trade union membership) on or through the services or otherwise to us.</p>
+            <p>If you send or disclose any sensitive personal data to us when you submit content to the services, you consent to our processing and use of such sensitive personal data in accordance with this policy. If you do not consent to our processing and use of such sensitive personal data, you must not submit such content to us. Please note that even if this information is provided, we will not store them anywhere on our side.</p>
+          
+            <h3 class="font-semibold mt-4 mb-1">1.3 Non-Personally-Identifiable Information</h3>
+            <p>We may collect and aggregate non-personally identifiable information which is information which does not permit you to be identified or identifiable either by itself or in combination with other information available to a third party. This information may include information such as a website that referred you to us, your IP address, browser type and language, hardware types, geographic location, and access times and durations. We also may collect navigational information, including information about the service content or pages you view, the links you click, and other actions taken in connection with the service. We use this information to analyze usage patterns as part of making improvements to the Service.</p>
+          </section>
+          
+          <!--sectin 2-->
+
+          <section class="mb-10">
+            <h2 class="text-xl font-bold mb-2">2. What Do We Do with The Information That We Collect?</h2>
+          
+            <h3 class="font-semibold mt-4 mb-1">2.1 Information that we collect</h3>
+            <p>Except as disclosed in this privacy policy, NubesSIM does not share your personal information with any outside parties.</p>
+          
+            <p class="mt-2">NubesSIM will use the personally identifiable information directly provided by you solely for the purpose for which you have provided it, which may include:</p>
+            <ul class="list-decimal list-inside mt-2 space-y-1">
+              <li>To operate, maintain, and improve the Services.</li>
+              <li>To manage your account, including to communicate with you regarding your account.</li>
+              <li>To operate and administer any promotions you participate in on any site or application.</li>
+              <li>To respond to your comments and questions and to provide customer service.</li>
+              <li>To send information including technical notices, updates, security alerts, and support and administrative messages.</li>
+              <li>With your consent, to send you marketing emails about upcoming promotions and other news, including information about products and services offered by us and our affiliates.</li>
+              <li>To process payments you make via the Services.</li>
+              <li>As we believe necessary or appropriate: (a) to comply with applicable laws; (b) to comply with lawful requests and legal process; (c) to enforce our Policy; and (d) to protect our rights, privacy, safety or property, and/or that of others.</li>
+            </ul>
+          
+            <p class="mt-2">We may share this information with service providers who perform services on our behalf, such as processing information requests, marketing assistance, data display, and audit conduction. These providers are only permitted to access the information needed for their specific task and are required to maintain its confidentiality and not use it for other purposes.</p>
+          
+            <p class="mt-2">We retain information about your marketing preferences for a reasonable period from your last interaction with our content, such as opening an email from us.</p>
+          
+            <p class="mt-2">We may also use the information you provide to improve your experience and, if you've consented, to send you offers from our partners or third parties via email or SMS that we think may interest you.</p>
+          
+            <p class="mt-2">We will retain your personally identifiable information only as long as reasonably necessary to provide the Services, unless a longer period is required or permitted by law (e.g., regulatory obligations).</p>
+          
+            <p class="mt-2">You may contact us anytime to:</p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+              <li>Opt-out of direct marketing communications.</li>
+              <li>Opt-out of our collection of sensitive personal data.</li>
+              <li>Opt-out of new processing activities beyond the original purpose.</li>
+            </ul>
+          
+            <p class="mt-2">You may also:</p>
+            <ul class="list-disc list-inside mt-2 space-y-1">
+              <li>Access your data via your account or by contacting us directly.</li>
+              <li>Update or correct inaccuracies by contacting us.</li>
+              <li>Request data deletion if it's no longer relevant or accurate.</li>
+            </ul>
+          
+            <p class="mt-2">For any inquiries regarding your personally identifiable information and how we use it, contact us at <a href="mailto:service@NubesSIM.com" class="text-nubes-purple underline">service@NubesSIM.com</a>.</p>
+          </section>
+
+          <!--Sectin 3-->
+          
+          <section class="mb-10">
+            <h2 class="text-xl font-bold mb-2">3. Disclosure</h2>
+            <p>As a general rule, NubesSIM will not disclose any of your personally identifiable information except under one of the following circumstances:</p>
+          
+            <ul class="list-disc list-inside mt-2 space-y-1">
+              <li>We have your permission, including the permission granted by your acceptance of this Privacy Policy.</li>
+              <li>We determine in good faith that it is legally required to be revealed by any relevant statute, regulation, ordinance, rule, administrative or court order, decree, or subpoena.</li>
+              <li>It is information that we determine must be disclosed to correct what we believe to be false or misleading information or to address activities that we believe to be manipulative, deceptive or otherwise a violation of law.</li>
+              <li>Where you are otherwise notified at the time we collect the data.</li>
+              <li>Where we need to share your information to provide the product or service you have requested.</li>
+              <li>When such disclosure is made subject to confidentiality restrictions in connection with a sale, merger, transfer, exchange, or other disposition (whether of assets, stock, or otherwise) of all or a portion of the business conducted by NubesSIM.</li>
+            </ul>
+          
+            <p class="mt-2">NubesSIM may share the non-personally identifiable information that it gathers, in aggregate form only, with advertisers and other partners.</p>
+          </section>
+
+          <!--Sectin 4-->
+
+          <section class="mb-10">
+            <h2 class="text-xl font-bold mb-2">4. Children’s Policy</h2>
+            <p>The Terms of Service clearly provide that Users must be (i) 18 or older, or (ii) 13 and older if either (a) an emancipated minor, or (b) he/she possesses legal parental or guardian consent. NubesSIM does not knowingly collect personally identifiable information from users under 13. In the event that we learn that we have collected any personal information from a user under the age of 13, we will attempt to identify and delete that information from our database.</p>
+          </section>
+
+          <!--Sectin 5-->
+
+          <section class="mb-10">
+            <h2 class="text-xl font-bold mb-2">5. International Usage</h2>
+            <p class="">The Service is owned by NubesSIM and may be accessed in Europe and abroad. For data protection purposes, NubesSIM is the controller and, unless otherwise noted, is also the processor of data. Information collected may be retained, and may be stored, processed, accessed, and used in jurisdictions whose privacy laws may be different and less protective than those of your home jurisdiction.</p>
+            <p class="mt-4">NubesSIM has also contracted with third-party service providers to manage customer support for optimal service. Some data needs to be disclosed and transferred to this third party to ensure the fulfillment of the service. All third parties involved have been engaged under a binding confidentiality agreement and have limited access to the NubesSIM data for the purposes of providing support.</p>
+          </section>
+
+          <!--sectin 6-->
+
+          <section class="mb-10">
+            <h2 class="text-xl font-bold mb-2">6. How Does a User Change or Update Information?</h2>
+            <p>If you have any questions or concerns about this privacy policy or would like the personally identifiable information that you have provided to be removed from our files, please contact NubesSIM via email at <a href="mailto:service@NubesSIM.com" class="text-nubes-purple underline">service@NubesSIM.com</a>.</p>
+          </section>
+
+          <!--Sectin 7-->
+
+          <section class="mb-10">
+            <h2 class="text-xl font-bold mb-2">7. Security and Encryption</h2>
+            <p>We follow generally accepted industry standards to help protect your personal information. No method of transmission over the internet, mobile technology, or method of electronic storage, is completely secure. Therefore, while we endeavor to maintain physical, electronic, and procedural safeguards to protect the confidentiality of the information that we collect online, we cannot guarantee its absolute security.</p>
+            <p class="mt-4">Our service has security measures in place designed to protect against the loss, misuse and alteration of the information under our control. We use standard Secure Socket Layer (SSL) encryption that encodes information for such transmissions. All service information is maintained on secure servers. Access to stored data is protected by multi-layered security controls including firewalls, role-based access controls and passwords.</p>
+            <p class="mt-4">You are responsible to keep your password secure. If you have reason to believe that your interaction with us is no longer secure (for example, if you feel that the security of any account you might have with us has been compromised), please immediately notify us of the problem by contacting us at <a href="mailto:service@NubesSIM.com" class="text-nubes-purple underline">service@NubesSIM.com</a>.</p>
+          </section>
+
+          <!--Sectin 8-->
+
+          <section class="mb-10">
+            <h2 class="text-xl font-bold mb-2">8. Changes to This Policy</h2>
+            <p>We reserve the right to change the terms of this privacy policy at any time. When we make changes, we will revise the last updated date at the top of the policy. If there are material changes to this statement or in how we will use your personal information, we will notify you by prominently posting a notice of such changes here or on our home page, or by sending you an email. We encourage you to review this policy whenever you visit one of our websites or applications.</p>
+          </section>
+
+          <div class="text-center py-8 text-sm text-gray-500">
+            2025 NubesSIM All rights reserved.
+          </div>
+
+      </main>
+      
+
+    <!-- Footer -->
+    <footer class="pixel-footer text-white py-16 bg-nubes-dark">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-5 gap-10 text-center md:text-left">
+          
+          <!-- Logo -->
+          <div class="flex justify-center md:justify-start">
+            <img src="image/logo-footer1.svg" alt="Nubes Logo" class="h-60 w-auto" />
+          </div>
+    
+          <!-- Popular Country -->
+          <div>
+            <h3 class="pixel-footer-title text-base font-semibold mb-4">Popular Country</h3>
+            <ul class="space-y-2 text-sm md:text-sm text-white/90">
+              <li><a href="#" class="pixel-footer-link">America</a></li>
+              <li><a href="#" class="pixel-footer-link">Japan</a></li>
+              <li><a href="#" class="pixel-footer-link">Turkey</a></li>
+              <li><a href="#" class="pixel-footer-link">Hong Kong</a></li>
+              <li><a href="#" class="pixel-footer-link">United Kingdom</a></li>
+              <li><a href="#" class="pixel-footer-link">Germany</a></li>
+              <li><a href="#" class="pixel-footer-link">Canada</a></li>
+            </ul>
+          </div>
+    
+          <!-- About Us -->
+          <div>
+            <h3 class="pixel-footer-title text-base font-semibold mb-4">About Us</h3>
+            <ul class="space-y-2 text-sm text-white/90">
+              <li><a href="about-us.html" class="pixel-footer-link">About Nubes</a></li>
+              <li><a href="#" class="pixel-footer-link">Blog</a></li>
+            </ul>
+          </div>
+    
+          <!-- More Info -->
+          <div>
+            <h3 class="pixel-footer-title text-base font-semibold mb-4">More Info</h3>
+            <ul class="space-y-2 text-sm text-white/90">
+              <li><a href="faq.html" class="pixel-footer-link">FAQ</a></li>
+              <li><a href="terms-of-service.html" class="pixel-footer-link">Terms of Service</a></li>
+              <li><a href="privacy-police.html" class="pixel-footer-link">Privacy Policy</a></li>
+              <li><a href="contact-us.html" class="pixel-footer-link">Contact Us</a></li>
+              <li><a href="#" class="pixel-footer-link">Referral</a></li>
+              <li><a href="#" class="pixel-footer-link">Review and Earn</a></li>
+            </ul>
+          </div>
+    
+          <!-- Sosmed & Stores -->
+          <div class="flex flex-col items-center md:items-end space-y-6">
+            <!-- Sosmed -->
+            <div class="flex space-x-4 justify-center">
+              <a href="#"><img src="image/social-media/instagram.png" alt="Instagram" class="w-6 h-6" /></a>
+              <a href="#"><img src="image/social-media/facebook.png" alt="Facebook" class="w-6 h-6" /></a>
+              <a href="#"><img src="image/social-media/linkedin.png" alt="LinkedIn" class="w-6 h-6" /></a>
+              <a href="#"><img src="image/social-media/youtube.png" alt="YouTube" class="w-6 h-6" /></a>
+              <a href="#"><img src="image/social-media/tiktok.png" alt="TikTok" class="w-6 h-6" /></a>
+              <a href="#"><img src="image/social-media/twitter.png" alt="Twitter" class="w-6 h-6" /></a>
+            </div>
+    
+            <!-- Store Buttons -->
+            <div class="flex flex-col items-center md:items-end space-y-3">
+              <a href="#"><img src="image/google-play.png" alt="Google Play" class="h-10 rounded-md shadow-md hover:scale-105 transition" /></a>
+              <a href="#"><img src="image/app-store.png" alt="App Store" class="h-10 rounded-md shadow-md hover:scale-105 transition" /></a>
+            </div>
+          </div>
+        </div>
+    
+        <!-- Copyright -->
+        <div class="border-t border-purple-500 mt-12 pt-6 text-center text-sm text-white/70">
+          © <span id="year"></span> Nubes. All rights reserved.
+        </div>
+      </div>
+    </footer>       
+
+    <!-- JavaScript -->
+    <script>
+        // FAQ Toggle Function
+        function toggleFaq(idx) {
+            for (let i = 0; i <= 6; i++) {
+                const content = document.getElementById('faq-content-' + i);
+                const icon = document.getElementById('faq-icon-' + i);
+                
+                if (i === idx) {
+                    const isOpen = !content.classList.contains('hidden');
+                    content.classList.toggle('hidden');
+                    icon.classList.toggle('open');
+                } else {
+                    content.classList.add('hidden');
+                    icon.classList.remove('open');
+                }
+            }
+        }
+
+        // copyright year
+        document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Swiper Initialization
+        const swiper = new Swiper(".myBannerSwiper", {
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            }
+        });
+    </script>
+</body>
+</html>

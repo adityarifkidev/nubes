@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - Nubes</title>
-    <link rel="icon" type="image/png" href="image/logo-footer1.svg">
-
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -209,8 +207,10 @@
         }
     </style>
 </head>
-<body class="font-inter bg-gray-50">
-    <!-- Header/Navbar -->
+<body class="font-sans text-gray-800 bg-white">
+
+  <!-- Header -->
+  <!-- Navigation Bar -->
     <nav class="w-full bg-white shadow-sm sticky top-0 z-50" x-data="{ mobileOpen: false }">
       <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
         
@@ -236,7 +236,7 @@
             <div x-show="open" @click.away="open = false" x-transition class="absolute left-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-lg z-20">
               <a href="faq.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
               <hr class="my-1 border-gray-200" />
-              <a href="contact-us.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
             </div>
           </div>
           <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
@@ -270,10 +270,10 @@
 
       <!-- Mobile Dropdown Menu -->
       <div x-show="mobileOpen" class="md:hidden px-6 pb-4 flex flex-col items-center space-y-3 text-center">
-        <a href="about-us.html" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
-        <a href="quick-guide.html" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
+        <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
+        <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
         <a href="faq.html" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">FAQ</a>
-        <a href="contact-us.html" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Contact Us</a>
+        <a href="/contact" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Contact Us</a>
         <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
       
         <div class="pt-2 flex flex-col items-center gap-2 w-full">
@@ -282,136 +282,77 @@
       </div>      
     </nav>
 
-    <!-- Hero Search Section -->
-    <section class="bg-gradient-to-r from-[#7B2FF2] to-[#F357A8] py-16 px-4">
-        <div class="max-w-3xl mx-auto text-center">
-            <h1 class="text-3xl md:text-4xl font-semibold text-white mb-6">We're here for you</h1>
-            <div class="relative">
-            <input 
-                type="text" 
-                placeholder="Please enter your question" 
-                class="w-full px-5 py-3 md:py-4 pl-12 rounded-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/40 shadow-md"
-            >
-            <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">
-                <i data-lucide="search" class="w-5 h-5"></i>
-            </span>
-            </div>
-        </div>
-    </section>
+  <!-- Back link -->
+  <div class="max-w-3xl mx-auto px-4 pt-10">
+    <a href="faq.html" class="text-sm text-purple-600 hover:underline">← Back to FAQ</a>
+  </div>
 
-    <section class="bg-white py-10 px-4 border-b" x-data="{ tab: 'popular' }">
-    <div class="max-w-4xl mx-auto">
-        <!-- Tab Buttons with Sliding Background -->
-        <div class="relative bg-gray-100 rounded-full p-1 shadow-md flex w-full max-w-2xl mx-auto">
-        <!-- Sliding Highlight -->
-        <div
-            class="absolute top-1 bottom-1 w-1/4 bg-[#7B2FF2] rounded-full transition-all duration-300"
-            :class="{
-            'left-1': tab === 'popular',
-            'left-1/4': tab === 'manage',
-            'left-2/4': tab === 'account',
-            'left-3/4': tab === 'support'
-            }"
-        ></div>
+  <!-- Title & Content -->
+  <section class="max-w-3xl mx-auto px-4 py-6">
+    <h1 class="text-3xl font-bold mb-4">How to Get a Nubes eSIM</h1>
+    <p class="font-semibold mb-6">Getting started with Nubes is quick and easy. Just follow these simple steps:</p>
 
-        <!-- Tabs -->
-        <button @click="tab = 'popular'"
-            class="relative z-10 w-1/4 text-sm font-semibold px-4 py-2 rounded-full text-center transition-all duration-200"
-            :class="tab === 'popular' ? 'text-white' : 'text-[#A259C6]'">
-            Popular
+    <ol class="space-y-4 list-decimal pl-5 text-base text-gray-800">
+      <li>
+        <strong>Check Compatibility</strong><br>
+        Make sure your device is eSIM-compatible and carrier-unlocked.
+      </li>
+      <li>
+        <strong>Download the Nubes App</strong><br>
+        Available on both iOS and Android, or visit the NubesSIM.com to get started.
+      </li>
+      <li>
+        <strong>Choose a Data Plan</strong><br>
+        Browse available eSIM data plans based on your destination and usage needs.
+      </li>
+      <li>
+        <strong>Purchase and Install</strong><br>
+        Follow the step-by-step installation guide provided after your purchase.
+      </li>
+      <li>
+        <strong>Connect Instantly</strong><br>
+        Once you've landed at your destination, your eSIM will connect to a local network automatically.
+      </li>
+    </ol>
+  </section>
+
+  <!-- More Questions -->
+  <section class="max-w-3xl mx-auto px-4 py-10 border-t" x-data="{ active: null }">
+    <h2 class="text-xl font-semibold mb-6">More Question</h2>
+
+    <template x-for="(item, index) in [
+      'Which Scenarios Are Suitable for Using eSIM?',
+      'Which Scenarios Are Suitable for Using eSIM?',
+      'Which Scenarios Are Suitable for Using eSIM?',
+      'Which Scenarios Are Suitable for Using eSIM?',
+      'Which Scenarios Are Suitable for Using eSIM?',
+      'Which Scenarios Are Suitable for Using eSIM?'
+    ]" :key="index">
+      <div class="border-b">
+        <button @click="active === index ? active = null : active = index"
+          class="w-full py-4 flex justify-between items-center text-left text-gray-700 hover:text-purple-600">
+          <span x-text="item" class="text-base font-medium"></span>
+          <i data-lucide="chevron-right"
+             :class="active === index ? 'rotate-90' : ''"
+             class="transition-transform duration-300 text-gray-400"></i>
         </button>
-        <button @click="tab = 'manage'"
-            class="relative z-10 w-1/4 text-sm font-semibold px-4 py-2 rounded-full text-center transition-all duration-200"
-            :class="tab === 'manage' ? 'text-white' : 'text-[#A259C6]'">
-            Manage eSIM
-        </button>
-        <button @click="tab = 'account'"
-            class="relative z-10 w-1/4 text-sm font-semibold px-4 py-2 rounded-full text-center transition-all duration-200"
-            :class="tab === 'account' ? 'text-white' : 'text-[#A259C6]'">
-            Account
-        </button>
-        <button @click="tab = 'support'"
-            class="relative z-10 w-1/4 text-sm font-semibold px-4 py-2 rounded-full text-center transition-all duration-200"
-            :class="tab === 'support' ? 'text-white' : 'text-[#A259C6]'">
-            Support
-        </button>
+        <div x-show="active === index" x-collapse class="text-sm text-gray-600 pb-4">
+          This is a placeholder answer.
         </div>
+      </div>
+    </template>
+  </section>
+
+  <!-- Help Section -->
+  <section class="text-center py-10">
+    <h3 class="text-lg font-semibold text-purple-600 mb-4">Need More Help?</h3>
+    <div class="flex flex-col sm:flex-row justify-center gap-4">
+      <a href="#" class="bg-[#DE2E7E] text-white px-6 py-2 rounded-full font-medium">Whatsapp</a>
+      <a href="mailto:support@nubes.com" class="bg-[#DE2E7E] text-white px-6 py-2 rounded-full font-medium">Support@nubes.com</a>
     </div>
-    </section>
+  </section>
 
-    <!-- FAQ List -->
-    <section class="py-12 px-4">
-        <div class="max-w-4xl mx-auto">
-            <div class="space-y-4">
-                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
-                    <a href="faq/how-to-get-a-nubes-esim.html" class="block group transition-colors duration-200 hover:bg-gray-50 rounded-lg">
-                        <div class="p-6 flex items-center justify-between">
-                            <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
-                            How to Get a Nubes eSIM
-                            </h3>
-                            <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
-                        </div>
-                    </a>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
-                    <div class="p-6 flex items-center justify-between">
-                        <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
-                            Which Scenarios Are Suitable for Using eSIM?
-                        </h3>
-                        <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
-                    <div class="p-6 flex items-center justify-between">
-                        <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
-                            How can I check eSIM compatibility for my phone?
-                        </h3>
-                        <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
-                    <div class="p-6 flex items-center justify-between">
-                        <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
-                            How can I check eSIM compatibility for my laptop?
-                        </h3>
-                        <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
-                    <div class="p-6 flex items-center justify-between">
-                        <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
-                            How to choose a Nubes eSIM data plan?
-                        </h3>
-                        <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
-                    <div class="p-6 flex items-center justify-between">
-                        <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
-                            Does Nubes eSIM come with calls & texts service?
-                        </h3>
-                        <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
-                    </div>
-                </div>
-                
-                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
-                    <div class="p-6 flex items-center justify-between">
-                        <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
-                            When should I install my Nubes eSIM?
-                        </h3>
-                        <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
+  <!-- Footer -->
     <footer class="pixel-footer text-white py-16 bg-nubes-dark">
       <div class="max-w-7xl mx-auto px-6">
         <div class="grid grid-cols-1 md:grid-cols-5 gap-10 text-center md:text-left">
@@ -450,7 +391,7 @@
             <ul class="space-y-2 text-sm text-white/90">
               <li><a href="faq.html" class="pixel-footer-link">FAQ</a></li>
               <li><a href="terms-of-service.html" class="pixel-footer-link">Terms of Service</a></li>
-              <li><a href="privacy-police.html" class="pixel-footer-link">Privacy Policy</a></li>
+              <li><a href="#" class="pixel-footer-link">Privacy Policy</a></li>
               <li><a href="contact-us.html" class="pixel-footer-link">Contact Us</a></li>
               <li><a href="#" class="pixel-footer-link">Referral</a></li>
               <li><a href="#" class="pixel-footer-link">Review and Earn</a></li>
@@ -484,37 +425,11 @@
       </div>
     </footer>
 
-    <script>
-        // Initialize Lucide icons
-        lucide.createIcons();
-        
-        // Tab functionality
-        const tabs = document.querySelectorAll('section:nth-of-type(3) button');
-        tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Remove active class from all tabs
-                tabs.forEach(t => {
-                    t.classList.remove('bg-purple-start', 'text-white');
-                    t.classList.add('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
-                });
-                
-                // Add active class to clicked tab
-                this.classList.remove('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
-                this.classList.add('bg-purple-start', 'text-white');
-            });
-        });
-        
-        // FAQ item click functionality
-        const faqItems = document.querySelectorAll('section:nth-of-type(4) .cursor-pointer');
-        faqItems.forEach(item => {
-            item.addEventListener('click', function() {
-                // Here you could add functionality to expand/collapse FAQ items
-                console.log('FAQ item clicked:', this.querySelector('h3').textContent);
-            });
-        });
-
-    </script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    document.addEventListener('alpine:init', () => {
+      lucide.createIcons();
+    });
+  </script>
 
 </body>
 </html>

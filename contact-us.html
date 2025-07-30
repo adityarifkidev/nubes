@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="icon" type="image/png" href="image/logo-footer1.svg">
-    <title>Quick Guide - Nubes eSIM</title>
-    
+    <title>Contact Us - Nubes</title>
+
     <!-- External Scripts and Styles -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
@@ -31,11 +33,15 @@
                     },
                     fontFamily: {
                         'sans': ['Inter', 'ui-sans-serif', 'system-ui'],
+                        'script': ['Dancing Script', 'cursive'],
                     },
                 }
             }
         }
     </script>
+    
+    <!-- Google Fonts for Script -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Custom Styles -->
     <style>
@@ -52,28 +58,6 @@
         }
         .pixel-shadow-lg { 
             box-shadow: 0 8px 32px 0 rgba(0,0,0,0.12); 
-        }
-        
-        /* Tab Styles */
-        .pixel-tab-active { 
-            background: #A259C6; 
-            color: #fff; 
-        }
-        .pixel-tab-inactive { 
-            background: #F3F4F6; 
-            color: #222; 
-        }
-        
-        /* FAQ Styles */
-        .pixel-faq-arrow { 
-            transition: transform 0.2s; 
-        }
-        .pixel-faq-arrow.open { 
-            transform: rotate(180deg); 
-        }
-        .pixel-faq-card { 
-            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); 
-            border-radius: 16px; 
         }
         
         /* Button Styles */
@@ -102,46 +86,35 @@
             color: #fff; 
         }
         
-        /* Hero Section Styles */
-        .pixel-banner { 
-            box-shadow: 0 8px 32px 0 rgba(162,89,198,0.18); 
-        }
-        .pixel-search { 
-            box-shadow: 0 2px 8px 0 rgba(162,89,198,0.10); 
-            font-size: 18px; 
-        }
-        .pixel-hero-btn { 
-            font-size: 18px; 
-            font-weight: 700; 
-            border-radius: 9999px; 
-            padding: 12px 40px; 
-        }
-        .pixel-hero-btn.selected { 
-            background: #fff; 
-            color: #A259C6; 
-        }
-        .pixel-hero-btn.unselected { 
-            background: #fff; 
-            color: #A259C6; 
-            opacity: 0.5; 
-        }
-        
-        /* Card and Country Styles */
-        .pixel-card { 
-            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.08); 
-        }
-        .pixel-country { 
-            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.10); 
-        }
-        
         /* Section Title */
         .pixel-section-title { 
             font-size: 32px; 
             font-weight: 700; 
-            color: #A259C6; 
+            color: #884692; 
         }
         
-        /* Help and App Button Styles */
+        /* Script Title */
+        .pixel-script-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            font-weight: 600;
+            color: #884692;
+        }
+        
+        /* Feature Card */
+        .pixel-feature-card {
+            background: white;
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 4px 24px 0 rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pixel-feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 32px 0 rgba(0,0,0,0.12);
+        }
+        
+        /* Help Button */
         .pixel-help-btn { 
             background: #EC4899; 
             color: #fff; 
@@ -150,9 +123,8 @@
             font-size: 17px; 
             padding: 14px 40px; 
         }
-        .pixel-help-btn svg { 
-            margin-right: 8px; 
-        }
+        
+        /* App Button */
         .pixel-app-btn { 
             background: #000; 
             color: #fff; 
@@ -160,9 +132,6 @@
             font-weight: 600; 
             font-size: 17px; 
             padding: 14px 32px; 
-        }
-        .pixel-app-btn svg { 
-            margin-right: 8px; 
         }
         
         /* Footer Styles */
@@ -180,37 +149,30 @@
             font-weight: 600; 
             margin-bottom: 16px; 
         }
-        .pixel-footer-social { 
-            color: #D1B3F7; 
-            margin-right: 12px; 
-        }
-        .pixel-footer-social:hover { 
-            color: #fff; 
-        }
-        .pixel-footer-copyright { 
-            color: #D1B3F7; 
-            font-size: 15px; 
-            margin-top: 32px; 
-        }
         
-        /* Pagination Dots */
-        .pixel-dot { 
-            width: 12px; 
-            height: 12px; 
-            border-radius: 9999px; 
-            margin: 0 3px; 
-            display: inline-block; 
+        /* Banner Section */
+        .pixel-banner-bg {
+            background: linear-gradient(135deg, #884692 0%, #C24CA7 100%);
+            position: relative;
+            overflow: hidden;
         }
-        .pixel-dot.active { 
-            background: #fff; 
-        }
-        .pixel-dot.inactive { 
-            background: rgba(255,255,255,0.5); 
+        .pixel-banner-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('/placeholder.svg?height=400&width=800');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.3;
         }
     </style>
-</head>
+  </head>
 
-<body class="bg-white">
+  <body class="bg-white text-gray-900">
+
     <!-- Navigation Bar -->
     <nav class="w-full bg-white shadow-sm sticky top-0 z-50" x-data="{ mobileOpen: false }">
       <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
@@ -237,7 +199,7 @@
             <div x-show="open" @click.away="open = false" x-transition class="absolute left-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-lg z-20">
               <a href="faq.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
               <hr class="my-1 border-gray-200" />
-              <a href="contact-us.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
+              <a href="/contact" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
             </div>
           </div>
           <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
@@ -274,7 +236,7 @@
         <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
         <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
         <a href="faq.html" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">FAQ</a>
-        <a href="contact-us.html" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Contact Us</a>
+        <a href="/contact" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Contact Us</a>
         <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
       
         <div class="pt-2 flex flex-col items-center gap-2 w-full">
@@ -283,184 +245,58 @@
       </div>      
     </nav>
 
-        <!-- Hero Section -->
-    <section class="relative min-h-[500px] flex items-center bg-gradient-to-br from-nubes-purple to-nubes-pink pt-12 pb-16 overflow-hidden">
-         <!-- Background Image -->
-        <img src="image/quick-guide/hero.png" alt="Hero Background" class="absolute inset-0 w-full h-full object-cover opacity-100 pointer-events-none" />
-        <div class="absolute inset-0 bg-gradient-to-br from-nubes-purple to-nubes-pink opacity-10"></div>
-
-        <!-- Hero Text Content -->
-        <div class="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-10">
-            <div class="flex flex-col items-start text-left">
-                <h1 class="text-4xl md:text-6xl font-bold text-yellow-400 leading-tight mb-3" style="letter-spacing:-1px;">
-                    What's Nubes eSIM?<br>
-                </h1>
-                <p class="text-base md:text-lg text-purple-100 mb-6 max-w-xl">
-                Nubes is a next-gen eSIM platform that lets you connect to mobile data around the world, no physical SIM, no roaming, just seamless connectivity
-                </p>
-            </div>
+    <!-- Contact Us with Form -->
+    <section class="py-20 px-4 bg-nubes-gray">
+    <div class="max-w-3xl mx-auto bg-white p-10 rounded-xl shadow-md">
+        <!-- Title -->
+        <div class="text-center mb-8">
+        <h1 class="text-3xl font-bold text-nubes-purple mb-2">Need help? Have a question?</h1>
+        <p class="text-gray-700 text-base">
+            We want to hear from you! Let us know what you need, and we'll get back to you as soon as possible.
+        </p>
         </div>
 
-        <!-- Fixed Image in Bottom Right -->
-        <div class="absolute bottom-20 right-0 z-0 w-[200px] md:w-[400px] lg:w-[480px]">
-            <img src="image/quick-guide/hero-phone.png" alt="Phone illustration" class="w-full h-auto object-contain" />
+        <!-- Contact Form -->
+        <form x-data="contactForm()" @submit.prevent class="space-y-6">
+        <!-- Name -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Your Name</label>
+            <input type="text" x-model="name" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-nubes-purple" required>
         </div>
+
+        <!-- Email -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Email Address</label>
+            <input type="email" x-model="email" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-nubes-purple" required>
+        </div>
+
+        <!-- Message -->
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Your Message</label>
+            <textarea x-model="message" rows="5" class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-nubes-purple" required></textarea>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center">
+            <!-- WhatsApp -->
+            <button type="button"
+                    @click="sendWhatsApp"
+                    class="flex items-center justify-center space-x-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 w-full md:w-auto">
+            <i data-lucide="smartphone" class="w-5 h-5"></i>
+            <span>Send via WhatsApp</span>
+            </button>
+
+            <!-- Email -->
+            <button type="button"
+                    @click="sendEmail"
+                    class="flex items-center justify-center space-x-2 bg-nubes-purple hover:bg-purple-end text-white font-semibold py-3 px-6 rounded-lg transition duration-200 w-full md:w-auto">
+            <i data-lucide="mail" class="w-5 h-5"></i>
+            <span>Send via Email</span>
+            </button>
+        </div>
+        </form>
+    </div>
     </section>
-
-
-    <!-- Feature Section -->
-    <section class="py-16 bg-nubes-gray">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid md:grid-cols-3 gap-8">
-            <!-- Global Travel Card -->
-            <div class="bg-white p-8 rounded-2xl shadow-md flex flex-col items-center text-center">
-                <img src="image/quick-guide/global travel.png" alt="Global Travel" class="mb-6 w-32 h-32 object-contain" />
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Global Travel</h3>
-                <p class="text-gray-600 leading-relaxed">
-                Travelers can use Nubes eSIM to avoid costly roaming fees and skip the inconvenience of buying local SIM cards abroad.
-                </p>
-            </div>
-
-            <!-- Business Travel Card -->
-            <div class="bg-white p-8 rounded-2xl shadow-md flex flex-col items-center text-center">
-                <img src="image/quick-guide/business travel.png" alt="Business Travel" class="mb-6 w-32 h-32 object-contain" />
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Business Travel</h3>
-                <p class="text-gray-600 leading-relaxed">
-                Stay connected to your team and inbox during business trips without using unsafe public Wi-Fi.
-                </p>
-            </div>
-
-            <!-- Data & Voice Service Card -->
-            <div class="bg-white p-8 rounded-2xl shadow-md flex flex-col items-center text-center">
-                <img src="image/quick-guide/data and voice.png" alt="Data and Voice Service" class="mb-6 w-32 h-32 object-contain" />
-                <h3 class="text-xl font-bold text-gray-900 mb-4">Data and Voice Service</h3>
-                <p class="text-gray-600 leading-relaxed">
-                Nubes provides fast and reliable mobile data in over 180+ countries. Nubes will soon offer low-cost voice service to complement its affordable data plans.
-                </p>
-            </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Compatibility Section -->
-    <section class="py-16 bg-nubes-white">
-        <div class="max-w-6xl mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-12 items-center">
-            
-            <!-- Text Content -->
-            <div class="flex flex-col items-center justify-center text-center lg:text-left h-full">
-                <h2 class="text-3xl lg:text-4xl font-bold mb-6 leading-tight text-[#884692] text-center">
-                    Before you take off, <br class="hidden lg:block" />
-                    double-check that your phone is eSIM compatible
-                </h2>
-                <button class="bg-[#F9B50A] text-white font-bold text-lg px-6 py-3 rounded-full hover:bg-opacity-90 transition duration-200 shadow-md mt-4">
-                    Check eSIM Compatibility
-                </button>
-            </div>
-
-
-            <!-- Phone Image -->
-            <div class="flex justify-center lg:justify-end">
-                <img src="image/quick-guide/samsung.png" alt="Phone Compatibility" class="max-w-xs w-full h-auto object-contain" />
-            </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- How to Get Nubes eSIM Section -->
-   <section class="py-16 bg-[#F9F8FB]">
-        <div class="max-w-6xl mx-auto px-4">
-
-            <!-- Section Title -->
-            <div class="text-center mb-10">
-            <h2 class="text-2xl md:text-3xl font-bold text-[#884692] mb-6">How To Get Nubes eSIM?</h2>
-
-            <!-- Toggle Tabs -->
-            <div x-data="{ activeTab: 'web' }" class="flex justify-center">
-                <div class="bg-gray-200 rounded-full p-1 flex">
-                <button
-                    @click="activeTab = 'web'"
-                    class="px-6 py-2 rounded-full font-medium transition text-sm"
-                    :class="activeTab === 'web' ? 'bg-[#884692] text-white' : 'text-gray-600'"
-                >
-                    Web
-                </button>
-                <button
-                    @click="activeTab = 'mobile'"
-                    class="px-6 py-2 rounded-full font-medium transition text-sm"
-                    :class="activeTab === 'mobile' ? 'bg-[#884692] text-white' : 'text-gray-600'"
-                >
-                    Mobile
-                </button>
-                </div>
-            </div>
-            </div>
-
-            <!-- Steps Layout -->
-            <div class="grid md:grid-cols-2 gap-8 mb-8">
-            <!-- Step 1 -->
-            <div>
-                <p class="text-sm font-semibold text-gray-700 mb-2">1. Choose your destination and purchase a plan</p>
-                <img src="image/quick-guide/region.png" alt="Choose Plan" class="rounded-lg w-full shadow" />
-            </div>
-
-            <!-- Step 2 -->
-            <div>
-                <p class="text-sm font-semibold text-gray-700 mb-2">2. Choose your destination and purchase a plan</p>
-                <img src="image/quick-guide/scan.png" alt="QR Code" class="rounded-lg w-full shadow" />
-            </div>
-            </div>
-
-            <!-- Step 3 Section -->
-            <section class="py-10 px-4 bg-gray-50">
-                <div class="max-w-5xl mx-auto">
-                    <h3 class="text-lg font-semibold mb-4">3. Select Your Activation Method:</h3>
-
-                    <!-- Method 1 -->
-                    <div class="bg-white rounded-xl shadow-sm p-6 mb-6">
-                    <h4 class="text-blue-600 font-medium text-base mb-2">Method 1: Scan QR Code</h4>
-
-                    <p class="font-semibold text-sm mt-4">For iPhone & Samsung:</p>
-                    <ul class="list-disc list-inside text-sm text-gray-700 mt-1 space-y-1">
-                        <li>Scan the QR code using your phone's camera.</li>
-                        <li>Click "Cellular Plan" to install.</li>
-                    </ul>
-
-                    <p class="font-semibold text-sm mt-4">For Pixel:</p>
-                    <ul class="list-disc list-inside text-sm text-gray-700 mt-1 space-y-1">
-                        <li>Go to Settings &gt; Network &amp; Internet &gt; Mobile Network or "+" &gt; Add more.</li>
-                        <li>Scan the QR code to install.</li>
-                    </ul>
-                    </div>
-
-                    <!-- Method 2 -->
-                    <div class="bg-white rounded-xl shadow-sm p-6">
-                    <h4 class="text-blue-600 font-medium text-base mb-2">Method 2: Enter Activation Code Manually</h4>
-
-                    <p class="font-semibold text-sm mt-4">For iPhone:</p>
-                    <ul class="list-disc list-inside text-sm text-gray-700 mt-1 space-y-1">
-                        <li>Go to Settings &gt; Cellular &gt; Add eSIM &gt; Enter Details Manually.</li>
-                        <li>Enter the "SM-DP+ Address" and "Activation Code", then tap "Next".</li>
-                    </ul>
-
-                    <p class="font-semibold text-sm mt-4">For Samsung:</p>
-                    <ul class="list-disc list-inside text-sm text-gray-700 mt-1 space-y-1">
-                        <li>Go to Settings &gt; Network &amp; Internet &gt; SIM card manager &gt; Add mobile plan &gt; Scan carrier QR code or Enter activation code.</li>
-                        <li>Enter the long "Activation Code."</li>
-                    </ul>
-
-                    <p class="font-semibold text-sm mt-4">For Pixel:</p>
-                    <ul class="list-disc list-inside text-sm text-gray-700 mt-1 space-y-1">
-                        <li>Go to Settings &gt; Network &amp; Internet &gt; Mobile Network or "+" &gt; Add more &gt; Download a SIM instead? &gt; Need help &gt; Enter it manually.</li>
-                        <li>Enter the long "Activation Code."</li>
-                    </ul>
-                    </div>
-                </div>
-            </section>
-        </div>
-        </section>
-
 
     <!-- App Download Section -->
     <section class="py-16 bg-nubes-gray">
@@ -569,42 +405,33 @@
           © <span id="year"></span> Nubes. All rights reserved.
         </div>
       </div>
-    </footer>
+    </footer>  
 
-    <!-- JavaScript -->
-    <script>
-        // FAQ Toggle Function
-        function toggleFaq(idx) {
-            for (let i = 0; i <= 6; i++) {
-                const content = document.getElementById('faq-content-' + i);
-                const icon = document.getElementById('faq-icon-' + i);
-                
-                if (i === idx) {
-                    const isOpen = !content.classList.contains('hidden');
-                    content.classList.toggle('hidden');
-                    icon.classList.toggle('open');
-                } else {
-                    content.classList.add('hidden');
-                    icon.classList.remove('open');
-                }
-            }
-        }
+   <!-- Alpine.js Component Script -->
+<script>
+  function contactForm() {
+    return {
+      name: '',
+      email: '',
+      message: '',
 
-        // copyright year
+      sendWhatsApp() {
+        const phoneNumber = '17058812941'; // This is the phone number for WhatsApp
+        const text = `Hello, my name is ${this.name}.\nEmail: ${this.email}\nMessage: ${this.message}`;
+        const encoded = encodeURIComponent(text);
+        window.open(`https://wa.me/${phoneNumber}?text=${encoded}`, '_blank');
+      },
+
+      sendEmail() {
+        const subject = encodeURIComponent('Support Request from ' + this.name);
+        const body = encodeURIComponent(`Name: ${this.name}\nEmail: ${this.email}\n\nMessage:\n${this.message}`);
+        window.location.href = `mailto:support@nubes.com?subject=${subject}&body=${body}`;
+      }
+    }
+  }
+
+  // copyright year
         document.getElementById("year").textContent = new Date().getFullYear();
-
-        // Swiper Initialization
-        const swiper = new Swiper(".myBannerSwiper", {
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true
-            }
-        });
-    </script>
-</body>
+</script>
+  </body>
 </html>
