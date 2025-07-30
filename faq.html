@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="image/logo-footer1.svg">
-    <title>Nubes - Travel with instant eSIM connectivity</title>
-    
-    <!-- External Scripts and Styles -->
+    <title>FAQ - Nubes</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
     <!-- Tailwind Config -->
     <script>
         tailwind.config = {
@@ -36,7 +34,7 @@
             }
         }
     </script>
-    
+
     <!-- Custom Styles -->
     <style>
         body { 
@@ -209,9 +207,8 @@
         }
     </style>
 </head>
-
-<body class="bg-white">
-    <!-- Navigation Bar -->
+<body class="font-inter bg-gray-50">
+    <!-- Header/Navbar -->
     <nav class="w-full bg-white shadow-sm sticky top-0 z-50" x-data="{ mobileOpen: false }">
       <div class="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
         
@@ -235,9 +232,9 @@
               </svg>
             </button>
             <div x-show="open" @click.away="open = false" x-transition class="absolute left-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-lg z-20">
-              <a href="/faq" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
+              <a href="faq.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
               <hr class="my-1 border-gray-200" />
-              <a href="/contact" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
+              <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
             </div>
           </div>
           <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
@@ -271,10 +268,10 @@
 
       <!-- Mobile Dropdown Menu -->
       <div x-show="mobileOpen" class="md:hidden px-6 pb-4 flex flex-col items-center space-y-3 text-center">
-        <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
-        <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
-        <a href="/faq" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">FAQ</a>
-        <a href="/contact" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Contact Us</a>
+        <a href="about-us.html" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
+        <a href="quick-guide.html" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
+        <a href="faq.html" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">FAQ</a>
+        <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Contact Us</a>
         <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
       
         <div class="pt-2 flex flex-col items-center gap-2 w-full">
@@ -283,74 +280,132 @@
       </div>      
     </nav>
 
-    <!-- Main Content -->
-    <main class="max-w-4xl mx-auto px-4 py-12">
-      <h1 class="text-center text-[#8D4794] font-bold text-5xl mb-6">Terms of Service</h1>
-      <p class="text-sm text-gray-500 mb-8">Last Updated: 2025</p>
+    <!-- Hero Search Section -->
+    <section class="bg-gradient-to-r from-[#7B2FF2] to-[#F357A8] py-16 px-4">
+        <div class="max-w-3xl mx-auto text-center">
+            <h1 class="text-3xl md:text-4xl font-semibold text-white mb-6">We're here for you</h1>
+            <div class="relative">
+            <input 
+                type="text" 
+                placeholder="Please enter your question" 
+                class="w-full px-5 py-3 md:py-4 pl-12 rounded-full text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/40 shadow-md"
+            >
+            <span class="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-500">
+                <i data-lucide="search" class="w-5 h-5"></i>
+            </span>
+            </div>
+        </div>
+    </section>
 
-      <p class="mb-6">
-        These Terms of Service apply to all prepaid services and related offerings provided by
-        <strong>ALPHA TELEVOICE LTD.</strong> (hereinafter “NubesSIM”), located at 702-1,
-        Concorde Gate, North York, ON, M3C 3N6, Canada. Unless otherwise agreed to in writing,
-        NubesSIM does not accept any terms that differ from these.
-      </p>
+    <section class="bg-white py-10 px-4 border-b" x-data="{ tab: 'popular' }">
+    <div class="max-w-4xl mx-auto">
+        <!-- Tab Buttons with Sliding Background -->
+        <div class="relative bg-gray-100 rounded-full p-1 shadow-md flex w-full max-w-2xl mx-auto">
+        <!-- Sliding Highlight -->
+        <div
+            class="absolute top-1 bottom-1 w-1/4 bg-[#7B2FF2] rounded-full transition-all duration-300"
+            :class="{
+            'left-1': tab === 'popular',
+            'left-1/4': tab === 'manage',
+            'left-2/4': tab === 'account',
+            'left-3/4': tab === 'support'
+            }"
+        ></div>
 
-      <!-- Section: 1 -->
-      <section class="mb-10">
-        <h2 class="text-xl font-bold mb-2">1. General Validity of the Terms</h2>
-        <p class="mb-2">1.1 These Terms of Service (hereinafter “Terms”) constitute a legally binding agreement between you (the “User” or “Customer”) and NubesSIM.</p>
-        <p class="mb-2">1.2 Prior to registering, purchasing, downloading, or using NubesSIM services, you must read, understand, and accept these Terms in their entirety.</p>
-        <p>1.3 If you do not agree to these Terms, you are not authorized to use any services provided by NubesSIM.</p>
-      </section>
+        <!-- Tabs -->
+        <button @click="tab = 'popular'"
+            class="relative z-10 w-1/4 text-sm font-semibold px-4 py-2 rounded-full text-center transition-all duration-200"
+            :class="tab === 'popular' ? 'text-white' : 'text-[#A259C6]'">
+            Popular
+        </button>
+        <button @click="tab = 'manage'"
+            class="relative z-10 w-1/4 text-sm font-semibold px-4 py-2 rounded-full text-center transition-all duration-200"
+            :class="tab === 'manage' ? 'text-white' : 'text-[#A259C6]'">
+            Manage eSIM
+        </button>
+        <button @click="tab = 'account'"
+            class="relative z-10 w-1/4 text-sm font-semibold px-4 py-2 rounded-full text-center transition-all duration-200"
+            :class="tab === 'account' ? 'text-white' : 'text-[#A259C6]'">
+            Account
+        </button>
+        <button @click="tab = 'support'"
+            class="relative z-10 w-1/4 text-sm font-semibold px-4 py-2 rounded-full text-center transition-all duration-200"
+            :class="tab === 'support' ? 'text-white' : 'text-[#A259C6]'">
+            Support
+        </button>
+        </div>
+    </div>
+    </section>
 
-      <!-- Section: 2 -->
-      <section class="mb-10">
-        <h2 class="text-xl font-bold mb-2">2. Description of Services</h2>
-        <h3 class="font-semibold mt-4 mb-1">2.1 Use of Services</h3>
-        <p class="mb-2">NubesSIM provides convenient and efficient cross-border communication solutions for users worldwide. In multiple countries and regions, we offer 
-          flexible data, voice, and SMS plans for frequent international travelers and business users. Users can instantly select, purchase, and activate eSIM plans covering locations 
-          worldwide through devices that support eSIM on the NubesSIM platform. Users can register, purchase, and manage eSIMs via NubesSIM.com or the Nubes App. Payment services are supported 
-          by Apple Pay, and Stripe, ensuring secure transactions.</p>
-        <h3 class="font-semibold mt-4 mb-1">2.2 User Registration and Information Provision</h3>
-        <p class="mb-2">Registered users must accept these Terms. During registration, the following information must be provided:</p>
-        <ul class="list-disc list-inside ml-4 mb-2">
-          <li>Nickname</li>
-          <li>Email address</li>
-        </ul>
-
-        <h3 class="font-semibold mt-4 mb-1">2.3 User Responsibilities</h3>
-        <p class="mb-2">When using NubesSIM services, users must comply with all applicable laws, regulations, and these Terms. Users must not engage in any of the following:</p>
-        <ul class="list-disc list-inside ml-4">
-          <li>Any form of abuse, illegal activity, or fraudulent behavior</li>
-          <li>Any action that may impair or interfere with the normal operation of NubesSIM’s network</li>
-        </ul>
-        <p class="mb-2">If a user violates the above, NubesSIM reserves the right to suspend or terminate the service without further notice, and during the suspension, the user shall remain responsible for all related fees.</p>
-      </section>
-
-      <!-- You can repeat sections like this: -->
-      <section class="mb-10">
-        <h2 class="text-xl font-bold mb-2">3. Formation, Duration, and Termination of the Contract</h2>
-        <p class="">The contract is established when a user places an order to purchase an eSIM via ，NubesSIM.com or the NubesSIM App. The contract will automatically terminate when the validity period of the purchased eSIM plan expires.If the user violates these Terms or is found engaging in fraudulent or abusive behavior, NubesSIM reserves the right to unilaterally terminate the contract and cancel the related services.</p>
-      </section>
-
-       <!-- Section: 4 -->
-      <section class="mb-10">
-        <h2 class="text-xl font-semibold mb-2">4. Fees and Payment</h2>
-        <h3 class="font-medium mt-4 mb-1">4.1 Payment Terms</h3>
-        <p>[Isi paragraf]</p>
-        <!-- Tambahkan subseksi sesuai struktur awal -->
-      </section>
-
-      <!-- Lanjutkan hingga Section 13 -->
-      <section class="mb-10">
-        <h2 class="text-xl font-bold mb-2">13. Contact Us</h2>
-        <p>If you have any inquiries regarding these Terms of Service or our offerings, contact us at:</p>
-        <ul class="mt-2 ml-4 list-disc list-inside">
-          <li>Email: <a href="mailto:service@NubesSIM.com" class="text-nubes-purple hover:underline">service@NubesSIM.com</a></li>
-          <li>Address: 702-1 Concorde Gate, North York, ON M3C 3N6, Canada</li>
-        </ul>
-      </section>
-    </main>
+    <!-- FAQ List -->
+    <section class="py-12 px-4">
+        <div class="max-w-4xl mx-auto">
+            <div class="space-y-4">
+                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
+                    <div class="p-6 flex items-center justify-between">
+                        <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
+                            How to Get a Nubes eSIM
+                        </h3>
+                        <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
+                    <div class="p-6 flex items-center justify-between">
+                        <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
+                            Which Scenarios Are Suitable for Using eSIM?
+                        </h3>
+                        <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
+                    <div class="p-6 flex items-center justify-between">
+                        <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
+                            How can I check eSIM compatibility for my phone?
+                        </h3>
+                        <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
+                    <div class="p-6 flex items-center justify-between">
+                        <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
+                            How can I check eSIM compatibility for my laptop?
+                        </h3>
+                        <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
+                    <div class="p-6 flex items-center justify-between">
+                        <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
+                            How to choose a Nubes eSIM data plan?
+                        </h3>
+                        <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
+                    <div class="p-6 flex items-center justify-between">
+                        <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
+                            Does Nubes eSIM come with calls & texts service?
+                        </h3>
+                        <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-sm border hover:shadow-md transition-shadow cursor-pointer group">
+                    <div class="p-6 flex items-center justify-between">
+                        <h3 class="text-lg font-medium text-gray-900 group-hover:text-purple-start transition-colors">
+                            When should I install my Nubes eSIM?
+                        </h3>
+                        <i data-lucide="chevron-right" class="h-5 w-5 text-gray-400 group-hover:text-purple-start transition-colors"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="pixel-footer text-white py-16 bg-nubes-dark">
@@ -423,42 +478,39 @@
           © <span id="year"></span> Nubes. All rights reserved.
         </div>
       </div>
-    </footer>       
+    </footer>
 
-    <!-- JavaScript -->
     <script>
-        // FAQ Toggle Function
-        function toggleFaq(idx) {
-            for (let i = 0; i <= 6; i++) {
-                const content = document.getElementById('faq-content-' + i);
-                const icon = document.getElementById('faq-icon-' + i);
+        // Initialize Lucide icons
+        lucide.createIcons();
+        
+        // Tab functionality
+        const tabs = document.querySelectorAll('section:nth-of-type(3) button');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                tabs.forEach(t => {
+                    t.classList.remove('bg-purple-start', 'text-white');
+                    t.classList.add('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+                });
                 
-                if (i === idx) {
-                    const isOpen = !content.classList.contains('hidden');
-                    content.classList.toggle('hidden');
-                    icon.classList.toggle('open');
-                } else {
-                    content.classList.add('hidden');
-                    icon.classList.remove('open');
-                }
-            }
-        }
-
-        // copyright year
-        document.getElementById("year").textContent = new Date().getFullYear();
-
-        // Swiper Initialization
-        const swiper = new Swiper(".myBannerSwiper", {
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false
-            },
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true
-            }
+                // Add active class to clicked tab
+                this.classList.remove('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+                this.classList.add('bg-purple-start', 'text-white');
+            });
         });
+        
+        // FAQ item click functionality
+        const faqItems = document.querySelectorAll('section:nth-of-type(4) .cursor-pointer');
+        faqItems.forEach(item => {
+            item.addEventListener('click', function() {
+                // Here you could add functionality to expand/collapse FAQ items
+                console.log('FAQ item clicked:', this.querySelector('h3').textContent);
+            });
+        });
+
     </script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
 </body>
 </html>
