@@ -217,13 +217,15 @@
         
         <!-- Logo -->
         <div class="flex items-center space-x-2">
-          <img src="image/logo-heading.svg" alt="Nubes Logo" class="h-10 w-auto" />
+          <a href="index.html">
+            <img src="image/logo-heading.svg" alt="Nubes Logo" class="h-10 w-auto" />
+          </a>
         </div>
 
         <!-- Desktop Navigation -->
         <div class="hidden md:flex items-center space-x-8">
-          <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
-          <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
+          <a href="about-us.html" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
+          <a href="quick-guide.html" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
           <!-- Help Center Dropdown -->
           <div x-data="{ open: false }" class="relative inline-block text-left">
             <button @click="open = !open" class="flex items-center gap-1 text-gray-700 hover:text-nubes-purple text-sm font-medium focus:outline-none">
@@ -255,7 +257,8 @@
 
         <!-- Mobile Hamburger Button -->
         <div class="md:hidden flex items-center">
-          <button @click="mobileOpen = !mobileOpen" class="text-gray-700 focus:outline-none">
+          <button @click="mobileOpen = !mobileOpen" class="text-gray-700 focus:outline-none" aria-label="Toggle mobile menu">
+            <span class="sr-only">Toggle mobile menu</span>
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path :class="{ 'hidden': mobileOpen }" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M4 6h16M4 12h16M4 18h16" />
@@ -276,13 +279,6 @@
       
         <div class="pt-2 flex flex-col items-center gap-2 w-full">
           <button class="pixel-navbar-btn w-full text-center">EN – USD $</button>
-          <button class="pixel-navbar-signin flex items-center justify-center gap-1 w-full">
-            Sign In
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
-            </svg>
-          </button>
         </div>
       </div>      
     </nav>
@@ -364,8 +360,8 @@
                     <h2 class="text-sm sm:text-[36px] font-bold text-white leading-snug">Review and Earn</h2>
                     <p class="text-xs sm:text-[24px] text-purple-100">Share your experience & Earn credits</p>
                     <a href="#"
-                       class="mt-1 w-fit bg-[#FCCD40] text-white font-semibold text-xs sm:text-[20px] py-1 px-3 rounded-full hover:bg-yellow-400 transition">
-                      Share to Learn More
+                       class="mt-1 w-fit bg-[#FCCD40] text-white font-semibold text-xs sm:text-[20px] py-2 px-10 rounded-full  hover:bg-yellow-400 transition">
+                      Review Now
                     </a>
                   </div>
       
@@ -768,7 +764,7 @@
           <div>
             <h3 class="pixel-footer-title text-base font-semibold mb-4">About Us</h3>
             <ul class="space-y-2 text-sm text-white/90">
-              <li><a href="#" class="pixel-footer-link">About Nubes</a></li>
+              <li><a href="about-us.html" class="pixel-footer-link">About Nubes</a></li>
               <li><a href="#" class="pixel-footer-link">Blog</a></li>
             </ul>
           </div>
@@ -780,6 +776,9 @@
               <li><a href="#" class="pixel-footer-link">FAQ</a></li>
               <li><a href="#" class="pixel-footer-link">Terms of Service</a></li>
               <li><a href="#" class="pixel-footer-link">Privacy Policy</a></li>
+              <li><a href="#" class="pixel-footer-link">Contact Us</a></li>
+              <li><a href="#" class="pixel-footer-link">Referral</a></li>
+              <li><a href="#" class="pixel-footer-link">Review and Earn</a></li>
             </ul>
           </div>
     
