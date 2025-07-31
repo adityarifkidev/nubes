@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <!-- Tailwind Config -->
     <script>
@@ -199,7 +200,7 @@
             <div x-show="open" @click.away="open = false" x-transition class="absolute left-0 mt-2 w-44 bg-white border border-gray-200 rounded-md shadow-lg z-20">
               <a href="faq.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">FAQ</a>
               <hr class="my-1 border-gray-200" />
-              <a href="/contact" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
+              <a href="contact-us.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Contact Us</a>
             </div>
           </div>
           <a href="#" class="text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
@@ -236,7 +237,7 @@
         <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">About Nubes</a>
         <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Quick Guide</a>
         <a href="faq.html" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">FAQ</a>
-        <a href="/contact" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Contact Us</a>
+        <a href="contact-us.html" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Contact Us</a>
         <a href="#" class="block text-gray-700 hover:text-nubes-purple text-sm font-medium">Blog</a>
       
         <div class="pt-2 flex flex-col items-center gap-2 w-full">
@@ -277,23 +278,27 @@
         </div>
 
         <!-- Action Buttons -->
-        <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center">
+          <div class="flex flex-col md:flex-row md:space-x-4 space-y-4 md:space-y-0 justify-center">
             <!-- WhatsApp -->
             <button type="button"
-                    @click="sendWhatsApp"
-                    class="flex items-center justify-center space-x-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 w-full md:w-auto">
-            <i data-lucide="smartphone" class="w-5 h-5"></i>
-            <span>Send via WhatsApp</span>
-            </button>
+              @click="sendWhatsApp"
+              class="flex items-center justify-center space-x-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition duration-200 w-full md:w-auto">
+              
+              <!-- Pakai gambar ikon WhatsApp -->
+              <img src="image/social-media/whatsapp.png" alt="WhatsApp" class="w-5 h-5" />
 
+              <span>Send via WhatsApp</span>
+            </button>
             <!-- Email -->
             <button type="button"
-                    @click="sendEmail"
-                    class="flex items-center justify-center space-x-2 bg-nubes-purple hover:bg-purple-end text-white font-semibold py-3 px-6 rounded-lg transition duration-200 w-full md:w-auto">
-            <i data-lucide="mail" class="w-5 h-5"></i>
-            <span>Send via Email</span>
+              @click="sendEmail"
+              class="flex items-center justify-center space-x-2 bg-nubes-purple hover:bg-purple-end text-white font-semibold py-3 px-6 rounded-lg transition duration-200 w-full md:w-auto">
+              
+              <!-- Email Icon as Image -->
+              <img src="image/social-media/email.png" alt="Email" class="w-5 h-5" />
+              <span>Send via Email</span>
             </button>
-        </div>
+          </div>
         </form>
     </div>
     </section>
@@ -431,7 +436,11 @@
   }
 
   // copyright year
-        document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Initialize Lucide icons
+  lucide.createIcons();
+
 </script>
   </body>
 </html>
